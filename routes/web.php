@@ -58,7 +58,7 @@ Route::post('/product/update-cart',[CartController::class,'updateCart'])->name('
 Route::delete('/delete-item/{rowId}', [CartController::class, 'deleteItem'])->name('front.deleteItem');
 Route::get('/product/checkout',[CartController::class,'checkout'])->name('front.checkout');
 Route::post('/product/process-checkout',[CartController::class,'processCheckout'])->name('front.processCheckout');
-Route::get('/product/thanks/{id}',[CartController::class,'thankyou'])->name('front.thanks');
+Route::get('/product/thanks/{OrderId}',[CartController::class,'thankyou'])->name('front.thanks');
 Route::post('/product/get-order-summary',[CartController::class,'getOrderSummary'])->name('front.ordersummary');
 //AUTHENTICATION
 

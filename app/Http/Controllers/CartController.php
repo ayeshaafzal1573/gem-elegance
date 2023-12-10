@@ -127,6 +127,7 @@ $customerAddress=CustomerAddress::where('user_id',Auth::user()->id)->first();
 session()->forget('url.intended');
   $countries=Country::orderBy('name','ASC')->get();
 //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
+if($customerAddress!=''){
 $userCountry=$customerAddress->country_id;
 $shippingInfo = Shipping::where('country_id', $userCountry)->first();
 $totalQty=0;
@@ -137,6 +138,11 @@ $totalQty+=$item->qty;
 }
 $totalShippingCharge=$totalQty*$shippingInfo->amount;
 $grandtotal=Cart::subtotal(2,'.','')+$totalShippingCharge;
+}
+else{
+$grandtotal=Cart::subtotal(2,'.','');
+$totalShippingCharge=0;
+}
 
     return view('front.checkout',
     ['countries'=>$countries,

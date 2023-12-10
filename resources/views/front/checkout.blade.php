@@ -266,30 +266,31 @@
         }
     });
 
-    $("#orderForm").submit(function(event){
-        event.preventDefault();
-        $('button[type="submit"]').prop('disabled',true)
-        $.ajax({
-            url: '{{ route('front.processCheckout') }}',
-            type: 'post',
-            data: $(this).serializeArray(),
-            dataType: 'json',
-            success: function(response) {
-                var errors=response.errors;
-             $('button[type="submit"]').prop('disabled',false)
+  $("#orderForm").submit(function(event) {
+    event.preventDefault();
+    $('button[type="submit"]').prop('disabled', true)
 
-                if(response.status==false){
+    $.ajax({
+        url: '{{ route('front.processCheckout') }}',
+        type: 'post',
+        data: $(this).serializeArray(),
+        dataType: 'json',
+        success: function(response) {
+            $('button[type="submit"]').prop('disabled', false)
 
-                }
-                else{
-                window.location.href="{{route('front.thanks')}}}"+response.orderId;
-                }
-            },
-            error: function(xhr, status, error) {
-                // Handle error response here
+            if (response.status == false) {
+                // Handle error response if needed
+            } else {
+                // Include the OrderId parameter in the redirect URL
+                window.location.href = "{{ route('front.thanks', ['OrderId' => ':OrderId']) }}".replace(':OrderId', response.orderId);
             }
-        });
+        },
+        error: function(xhr, status, error) {
+            // Handle error response here
+        }
     });
+});
+
 
 $("#country").change(function () {
     console.log("Country changed");

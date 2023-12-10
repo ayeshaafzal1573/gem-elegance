@@ -1,0 +1,96 @@
+@extends('admin.layouts.app')
+
+@section('content')
+ 	
+  <div class="app-content">
+    <div class="app-content-header">
+      <h1 class="app-content-headerText">Create Category</h1>
+      <button class="mode-switch" title="Switch Theme">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+          <defs></defs>
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+      <a href="{{route('category.list')}}">
+      <button class="app-content-headerButton">Back</button>
+      </a>
+    </div>
+    <div class="app-content-actions">
+     
+    </div>
+    <form action="{{route('category.insert')}}" method="post" enctype="multipart/form-data">
+        @csrf
+   <div class="row mb-3">
+    <div class="col-md-12">
+        <label for="Category Name">Category Name:</label>
+        <input class="category-input form-control" placeholder="Enter Category Name" type="text" name="name">
+    </div>
+    </div>
+     <div class="row mb-3">
+    <div class="col-md-12">
+        <label for="Category Name">Category Slug:</label>
+        <input class="category-input form-control" placeholder="Enter Category Name" type="text" name="slug">
+    </div>
+    </div>
+    <div class="row mb-3">
+ <div class="col-md-12">
+        <label for="Status">Status</label>
+        <select name="status" class="form-control category-input">
+            <option value="1">Active</option>
+            <option value="0">Block</option>
+        </select>
+    </div>
+    </div>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image" class="form-control category-input" onchange="previewImage()">
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <img id="image-preview" src="#" alt="Image Preview" style="max-width: 100%; display: none;">
+    </div>
+</div>
+
+    <div class="row mb-3">
+    <div class="col-md-6">
+        <label for="show">Show on Home</label>
+        <select name="show" id="status" class="form-control category-input">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender" class="form-control category-input">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+</div>
+<input type="submit" value="Create" class="app-content-headerButton">
+    </form>
+     </div>
+         <script>
+    function previewImage() {
+        var input = document.getElementById('image');
+        var preview = document.getElementById('image-preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                   preview.style.height = '100px';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+@endsection

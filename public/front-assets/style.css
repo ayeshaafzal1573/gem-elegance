@@ -237,14 +237,15 @@ text-align: center;
     overflow: hidden;
     text-align: center;
     margin: 10px;
-    width: fit-content !important;
+    width: 350px !important;
     height: auto;
+    display: block;
     position: relative;
 }
 
 .rings img {
     height: 350px;
-width: 250px;
+width: 300px;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -272,7 +273,10 @@ width: 250px;
     color: black;
     text-decoration: none;
 }
-
+.rings-text a:hover {
+    color: #C5B19E;
+    text-decoration: none;
+}
 /* DETAIL PAGE */
 #main-img img{
 width: 400px;

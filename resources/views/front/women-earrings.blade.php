@@ -1,6 +1,6 @@
 @extends('front.layouts.app')
 @section('content')
-  
+
 <!-- CATEGORIES -->
 <h3 class="women-heading">
     POPULAR EARRINGS <br />
@@ -14,30 +14,34 @@
         <path d="M0 2H260" stroke="#A5826A" stroke-width="3" />
     </svg>
 </h3>
-@php
-    $filteredProducts = $products->filter(function ($product) {
-        return $product->category_id === 5;
-    });
-@endphp
 
-@if($filteredProducts->isNotEmpty())
-    @foreach ($filteredProducts as $product)
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-4 rings">
-                    @if($product->images->isNotEmpty())
-                        <img src="{{ asset('/' . $product->images->first()->image_path) }}" alt="product" class="img-fluid">
-                    @else
-                        <p>No Image</p>
-                    @endif
-                  <div class="rings-text"><a href="{{ route('front.product-detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a></div>
-            </div> 
-             </div>
-    @endforeach
-   
-     </div>
-@else
-    <p>No products available.</p>
-@endif
+<div class="container">
+    <div class="row justify-content-center">
+
+    @php
+        $filteredProducts = $products->filter(function ($product) {
+            return $product->category_id === 5;
+        });
+    @endphp
+
+    @if($filteredProducts->isNotEmpty())
+        @foreach ($filteredProducts as $product)
+            <div class="col-sm-4 col-md-5 col-lg-4 col-xl-4 rings">
+                @if($product->images->isNotEmpty())
+                    <img src="{{ asset('/' . $product->images->first()->image_path) }}" alt="product" class="img-fluid" width="100%">
+                @else
+                    <p>No Image</p>
+                @endif
+                <div class="rings-text"><a href="{{ route('front.product-detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a></div>
+            </div>
+        @endforeach
+    @else
+        <div class="col-md-12">
+            <p>No products available.</p>
+        </div>
+    @endif
+
+    </div>
+</div>
 
 @endsection

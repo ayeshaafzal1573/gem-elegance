@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('discount_coupans', function (Blueprint $table) {
-            $table->id();
+        Schema::create('discount_coupan', function (Blueprint $table) {
+             $table->id();
             //the discount coupan code
             $table->string('code');
             //the human readable discount coupan code
@@ -47,6 +47,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discount_coupans');
+        Schema::dropIfExists('discount_coupan');
     }
 };

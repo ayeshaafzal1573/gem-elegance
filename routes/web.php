@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ShippingController;
+use App\Http\Controllers\admin\DiscountCodeController;
+
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
@@ -44,6 +46,9 @@ Route::post('/shipping/store', [ShippingController::class, 'store'])->name('ship
 Route::get('/shipping/edit/{id}', [ShippingController::class, 'edit'])->name('shipping.edit');
 Route::post('/shipping/update/{id}', [ShippingController::class, 'update'])->name('shipping.update');
 Route::get('/shipping/delete/{id}', [ShippingController::class, 'delete'])->name('shipping.delete');
+//COUPAN ROUTES
+Route::get('/coupan/create',[DiscountCodeController::class,'create'])->name('coupan.create');
+Route::post('/coupan', [DiscountCodeController::class, 'store'])->name('coupan.store');
 
 });
 

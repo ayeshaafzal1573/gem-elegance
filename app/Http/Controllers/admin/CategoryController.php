@@ -27,7 +27,7 @@ public function index(Request $request)
     $category = $category->get();
 
     // Pass the categories to the view
-    return view('admin.category.list', compact('categories'));
+    return view('admin.category.list', compact('category'));
 }
 
 
@@ -130,7 +130,7 @@ if ($validator->fails()) {
 
     $category->save();
 
-return redirect()->route('category.list');
+return redirect()->route('category.list')->with('success','Category Updated Successfully!');
 
 }
 public function delete($categoryId)
@@ -144,7 +144,7 @@ public function delete($categoryId)
     $category->delete();
 
         return redirect()->route('category.list')
-        ->with('success', 'Category Deleted Successfully');
+        ->with('danger', 'Category Deleted Successfully');
 }
 
 

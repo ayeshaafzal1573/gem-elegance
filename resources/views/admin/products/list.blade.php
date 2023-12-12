@@ -17,7 +17,7 @@
 <input id="searchInput" class="search-bar" name="keyword" placeholder="Search..." type="search" value="{{ request('keyword') }}">
     <input type="button" value="Search" class="app-content-headerButton" onclick="submitSearchForm()">
 
-    
+
       <div class="app-content-actions-wrapper">
         <div class="filter-button-wrapper">
           <button class="action-button filter jsFilter"><span>Filter</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
@@ -59,28 +59,40 @@
         </button>
       </div>
     </div>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if(session('danger'))
+    <div class="alert alert-danger">
+        {{ session('danger') }}
+    </div>
+@endif
+
     <div class="products-area-wrapper tableView">
       <div class="products-header">
-       
+
+
         <div class="product-cell image">
           Product Name
-        
+
         </div>
-       
+
         <div class="product-cell status-cell">Status</div>
         <div class="product-cell sales">Slug</div>
           <div class="product-cell sales">Description</div>
            <div class="product-cell sales">Price</div>
-            
+
           <div class="product-cell sales">Style</div>
           <div class="product-cell sales">Material</div>
           <div class="product-cell sales">Category</div>
-        
+
         <div class="product-cell stock">Action</div>
 
 
       </div>
-        
+
   @if($products->isNotEmpty())
     @foreach ($products as $products)
         <div class="products-row">
@@ -133,7 +145,7 @@
 </a>
 
               </div>
-               
+
         </div>
     @endforeach
 @else

@@ -98,7 +98,8 @@ public function insert(Request $request)
         $product->images()->save($productImage);
     }
 }
-    return redirect()->route('product.list');
+    return redirect()->route('product.list')->with('success', 'Product added successfully!');
+
 }
 public function edit($productid, Request $request)
 {
@@ -169,7 +170,8 @@ if ($request->hasFile('images')) {
         $product->images()->save($productImage);
     }
 }
-    return redirect()->route('product.list');
+     return redirect()->route('product.list')->with('success', 'Product updated successfully!');
+
 }
     //DELETE
 public function delete($productid)
@@ -180,7 +182,7 @@ public function delete($productid)
         return redirect()->route('product.list');
     }
     $product->delete();
-       return redirect()->route('product.list');
+       return redirect()->route('product.list')->with('danger', 'Product deleted successfully!');
 }
 
 }

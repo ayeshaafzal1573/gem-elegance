@@ -12,6 +12,8 @@
         <path d="M0 2H260" stroke="#A5826A" stroke-width="3" />
       </svg>
     </h3>
+       <div class="container">
+            <div class="row justify-content-center">
      @php
     $filteredProducts = $products->filter(function ($product) {
         return $product->category_id === 1;
@@ -19,8 +21,7 @@
 @endphp
 @if($filteredProducts->isNotEmpty())
     @foreach ($filteredProducts as $product)
-        <div class="container">
-            <div class="row justify-content-center">
+
                 <div class="col-md-4 rings">
                     @if($product->images->isNotEmpty())
                         <img src="{{ asset('/' . $product->images->first()->image_path) }}" alt="product" class="img-fluid">
@@ -28,15 +29,14 @@
                         <p>No Image</p>
                     @endif
                     <div class="rings-text"><a href="{{ route('front.product-detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a></div>
-          </div> 
-             </div>
+          </div>
+
     @endforeach
-   
+</div>
      </div>
 @else
     <p>No products available.</p>
 @endif
 
-    
+
  @endsection
- 

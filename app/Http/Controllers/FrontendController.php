@@ -11,7 +11,7 @@ class FrontendController extends Controller
    return view('front.index');
     }
     public function women(){
-            $category = Category::where('gender', 'Female')->latest()->get();       
+            $category = Category::where('gender', 'Female')->latest()->get();
     return view ('front.women' , compact('category'));
     }
 public function womenearings(Request $request)
@@ -58,7 +58,7 @@ public function womenrings(Request $request){
 }
 
     public function men(Request $request){
-          $category = Category::where('gender', 'Male')->latest()->get();       
+          $category = Category::where('gender', 'Male')->latest()->get();
     return view('front.men' , compact('category'));
     }
     public function menwatch(Request $request){
@@ -110,6 +110,12 @@ public function detail($slug)
     }
 
     return view('front.detail', compact('product'));
+}
+public function newarrival(){
+return view('front.new-arrivals');
+}
+public function about(){
+return view('front.about');
 }
 
 }

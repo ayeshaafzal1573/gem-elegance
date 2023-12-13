@@ -39,9 +39,10 @@
         <div class="col-md-12">
             <p>No products available.</p>
         </div>
+          </div>
     @endif
 
-    </div>
+
 </div>
 
 @endsection

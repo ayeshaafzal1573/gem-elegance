@@ -1,5 +1,11 @@
 @extends('front.layouts.app')
 @section('content')
+<style>
+    body {
+        background: white !important;
+
+    }
+</style>
    <!--HOME BANNER -->
 
    <div class="banner-img">
@@ -16,5 +22,4 @@
    </div>
    <!--HOME BANNER END-->
    @endsection
-  
-  
+

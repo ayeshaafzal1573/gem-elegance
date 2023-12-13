@@ -1,10 +1,5 @@
 @extends('front.layouts.app')
 @section('content')
-<style>
-    body {
-        background: #C5B19E;
-    }
-</style>
 
 <h3 class="women-heading">
     MY CART <br />

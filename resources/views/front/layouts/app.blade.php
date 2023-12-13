@@ -30,7 +30,7 @@
           <a class="nav-link" aria-current="page" href="{{route('front.index')}}">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="new-arrivals.html">NEW ARRIVALS</a>
+          <a class="nav-link" href="{{route('front.newarrival')}}">NEW ARRIVALS</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +55,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">ABOUT</a>
+          <a class="nav-link" href="{{route('front.about')}}">ABOUT</a>
         </li>
       </ul>
       <div class="icon">

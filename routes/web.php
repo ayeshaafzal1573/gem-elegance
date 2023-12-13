@@ -56,6 +56,8 @@ Route::post('/coupan', [DiscountCodeController::class, 'store'])->name('coupan.s
 // FRONTEND
 Route::get('/',[FrontendController::class,'index'])->name('front.index');
 Route::get('/{slug}',[FrontendController::class,'detail'])->name('front.product-detail');
+Route::get('/front/new-arrival',[FrontendController::class,'newarrival'])->name('front.newarrival');
+Route::get('/front/about',[FrontendController::class,'about'])->name('front.about');
 //CART
 Route::get('/product/cart',[CartController::class,'cart'])->name('front.cart');
 Route::post('/product/add-to-cart',[CartController::class,'addToCart'])->name('front.addToCart');

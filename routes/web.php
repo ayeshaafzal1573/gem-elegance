@@ -48,8 +48,11 @@ Route::post('/shipping/update/{id}', [ShippingController::class, 'update'])->nam
 Route::get('/shipping/delete/{id}', [ShippingController::class, 'delete'])->name('shipping.delete');
 //COUPAN ROUTES
 Route::get('/coupan/create',[DiscountCodeController::class,'create'])->name('coupan.create');
+Route::get('/coupan/list',[DiscountCodeController::class,'index'])->name('coupan.list');
 Route::post('/coupan', [DiscountCodeController::class, 'store'])->name('coupan.store');
-
+Route::get('/coupan/edit/{id}', [DiscountCodeController::class, 'edit'])->name('coupan.edit');
+Route::post('/coupan/update/{id}', [DiscountCodeController::class, 'update'])->name('coupan.update');
+Route::get('/coupan/delete/{id}', [DiscountCodeController::class, 'delete'])->name('coupan.delete');
 });
 
 });

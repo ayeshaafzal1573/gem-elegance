@@ -31,29 +31,34 @@
  </svg>
  </h3>
 
- <div class="container-fluid">
-  <div class="row mt-3" >
+ <div class="container">
+  <div class="row mt-3 mb-4" >
     <div class="col-md-1">
     </div>
-    <div class="col-md-3" id="newestproducts">
-      <div> <img src="{{asset('front-assets/images/Rectangle 21.png')}}" alt="">
-        <button class="newestbutton1"><a href="">VIEW MORE</a></button>
-      </div>
-
-      <p class="newesttext">Gold Plated neck piece</p>
-      <p class="newesttext">$100</p>
+   <div class="col-md-2" id="newestproducts">
+    <div style="position: relative;">
+        <img src="{{asset('front-assets/images/Rectangle 21.png')}}" alt="">
+        <button class="newestbutton1">
+            <a href="{{route('front.women-necklace')}}">VIEW MORE</a>
+        </button>
     </div>
+    <p class="newesttext">Gold Plated Necklace</p>
+    <p class="newesttext">Rs: 1000.00</p>
+</div>
 
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-3" id="newestproducts">
-      <div> <img src="{{asset('front-assets/images/Rectangle 23.png')}}" alt="">
-        <button class="newestbutton2"><a href="">VIEW MORE </a></button>
-      </div>
+<div class="col-md-2">
+</div>
 
-      <p class="newesttext">Gold Plated neck piece</p>
-      <p class="newesttext">$100</p>
+<div class="col-md-3" id="newestproducts">
+    <div style="position: relative;">
+        <img src="{{asset('front-assets/images/Rectangle 23.png')}}" alt="">
+        <button class="newestbutton2">
+            <a href="{{route('front.men-necklace')}}">VIEW MORE</a>
+        </button>
     </div>
+    <p class="newesttext">Silver Necklace</p>
+    <p class="newesttext">Rs: 2000.00</p>
+</div>
 
   </div>
 </div>

@@ -38,12 +38,18 @@
                     <label for="Category Name">Product Name:</label>
                     <input class="category-input form-control" placeholder="Enter Category Name" type="text"
                         name="name">
+                        @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
                  <div class="col-md-6">
 
                     <label for="qty">Product Quantity:</label>
                     <input type="number" min="0" name="qty" id="qty" class="form-control category-input"
                         placeholder="Qty">
+                        @error('qty')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
             </div>
             <div class="row mb-3">
@@ -51,11 +57,17 @@
                     <label for="Category Name">Product Price:</label>
                     <input class="category-input form-control" placeholder="Enter Product Price" type="number"
                         name="price">
+                        @error('price')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="Category Name">Product Compare Price:</label>
                     <input class="category-input form-control" placeholder="Enter Product Compare Price" type="number"
                         name="compare_price">
+                        @error('compare_price')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
             </div>
             <div class="row mb-3">
@@ -63,11 +75,17 @@
                     <label for="style">Style</label>
                     <input type="text" name="style" id="style" class="form-control category-input"
                         placeholder="Style">
+                        @error('style')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="material">Material</label>
                     <input type="text" name="material" id="material" class="form-control category-input"
                         placeholder="Material">
+                        @error('material')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
             </div>
             <div class="row mb-3">
@@ -75,6 +93,9 @@
                     <label for="Category Name">Description:</label>
                     <input class="category-input form-control" placeholder="Enter Product Description" type="text"
                         name="description">
+                        @error('description')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
             </div>
            <div class="row mb-3">
@@ -83,13 +104,15 @@
                             <input type="file" name="images[]" id="images" multiple class="form-control category-input"
                                 onchange="previewImages()">
                         </div>
-
+@error('images')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                         <div id="imagePreviews" class="mt-2"></div>
     </div>
 
 
             <div class="row mb-3">
-               
+
                 <div class="col-md-6">
                     <label for="category">Category</label>
                                     <select name="category" id="category" class="form-control category-input">
@@ -100,6 +123,9 @@
                                             @endforeach
                                         @endif
                                     </select>
+                                    @error('category')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
                  <div class="col-md-6">
                     <label for="Status"> Product Status:</label>
@@ -107,10 +133,13 @@
                         <option value="1">Active</option>
                         <option value="0">Block</option>
                     </select>
+                    @error('status')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
                 </div>
             </div>
 
-         
+
             <input type="submit" value="Create" class="app-content-headerButton">
         </form>
     </div>

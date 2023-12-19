@@ -48,7 +48,7 @@
         </a>
       </li>
       <li class="sidebar-list-item">
-        <a href="{{route('coupan.create')}}">
+        <a href="{{route('coupan.list')}}">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 8.99998C10.5523 8.99998 11 9.44769 11 9.99998C11 10.5523 10.5523 11 10 11C9.44775 11 9.00004 10.5523 9.00004 9.99998C9.00004 9.44769 9.44775 8.99998 10 8.99998Z" fill="#000000"/>
 <path d="M13 14C13 14.5523 13.4478 15 14 15C14.5523 15 15 14.5523 15 14C15 13.4477 14.5523 13 14 13C13.4478 13 13 13.4477 13 14Z" fill="#000000"/>

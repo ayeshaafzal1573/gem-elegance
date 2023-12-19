@@ -6,9 +6,9 @@
 <link rel="icon" href="{{asset('admin-assets/images/logo.png')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="{{asset('admin-assets/css/dashboard.css')}}">
+  <link rel="stylesheet" href="{{asset('admin-assets/css/datetimepicker.css')}}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <!-- Include Font Awesome via CDN in your HTML -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -28,5 +28,6 @@
 </script>
 
 <script src="{{asset('admin-assets/js/script.js')}}"></script>
+<script src="{{asset('admin-assets/js/datetimepicker.js')}}"></script>
 </body>
 </html>

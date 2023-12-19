@@ -726,6 +726,7 @@ border-radius:10px ;
 #newestproducts {
     background-color: #E5DCC8;
     width: auto;
+    height: 500px;
 }
 
 .newesttext {
@@ -738,13 +739,12 @@ border-radius:10px ;
     border: 3px #A27F61 solid;
     background-color: transparent;
     color: black;
-    display: flex;
-    position: absolute;
-    left: 270px;
-    bottom: -450px;
+position: absolute;
+top: 200px;
+left: 120px;
     font-weight: lighter;
     padding: 10px;
-   top: 100px;
+
 
 }
 
@@ -754,15 +754,14 @@ border-radius:10px ;
 }
 
 .newestbutton2 {
-    border-radius: 5px;
+border-radius: 5px;
     text-decoration: none;
     border: 3px #A27F61 solid;
     background-color: transparent;
     color: black;
-    display: flex;
     position: absolute;
-    left: 1045px;
-    bottom: -450px;
+    top: 200px;
+    left: 120px;
     font-weight: lighter;
     padding: 10px;
 

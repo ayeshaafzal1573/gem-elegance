@@ -96,10 +96,8 @@ public function update(Request $request, $categoryId)
 ]);
 
 if ($validator->fails()) {
-    return response()->json([
-        'status' => false,
-        'errors' => $validator->errors(),
-    ]);
+return redirect()->back()->withErrors($validator)->withInput();
+
 }
 
 

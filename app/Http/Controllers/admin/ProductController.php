@@ -62,7 +62,10 @@ public function insert(Request $request)
         'status' => 'required',
 
     ]);
+if($validatedData->fails()){
+return redirect()->back()->withErrors($validator)->withInput();
 
+}
     $product = new Product();
     $product->name = $request->input('name');
       $product->slug = Str::slug($request->input('name'));

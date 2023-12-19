@@ -26,7 +26,7 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" value="{{(!empty($customerAddress))? $customerAddress->first_name:' '}}">
+                                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" >
                                     @error('first_name')
                                         <span class="text-danger">
 									{{$message}}
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="{{(!empty($customerAddress))? $customerAddress->last_name:' '}}">
+                                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" >
                                           @error('last_name')
                                         <span class="text-danger">
 									{{$message}}
@@ -47,7 +47,7 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="email" id="email" class="form-control" placeholder="Email" value="{{(!empty($customerAddress))? $customerAddress->email:' '}}">
+                                        <input type="text" name="email" id="email" class="form-control" placeholder="Email" >
                                           @error('email')
                                         <span class="text-danger">
 									{{$message}}
@@ -77,7 +77,7 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <textarea name="address" id="address" cols="30" rows="3" placeholder="Address" class="form-control" value="{{(!empty($customerAddress))? $customerAddress->address:' '}}"></textarea>
+                                        <textarea name="address" id="address" cols="30" rows="3" placeholder="Address" class="form-control" ></textarea>
                                       @error('address')
                                         <span class="text-danger">
 									{{$message}}
@@ -88,7 +88,7 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="apartment" id="appartment" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)" value="{{(!empty($customerAddress))? $customerAddress->apartment:' '}}">
+                                        <input type="text" name="apartment" id="appartment" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)" >
                                       @error('apartment')
                                         <span class="text-danger">
 									{{$message}}
@@ -99,7 +99,7 @@
 
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <input type="text" name="city" id="city" class="form-control" placeholder="City" value="{{(!empty($customerAddress))? $customerAddress->city:' '}}">
+                                        <input type="text" name="city" id="city" class="form-control" placeholder="City" >
                                           @error('city')
                                         <span class="text-danger">
 									{{$message}}
@@ -110,7 +110,7 @@
 
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <input type="text" name="state" id="state" class="form-control" placeholder="State" value="{{(!empty($customerAddress))? $customerAddress->state:' '}}">
+                                        <input type="text" name="state" id="state" class="form-control" placeholder="State" >
                                       @error('state')
                                         <span class="text-danger">
 									{{$message}}
@@ -121,7 +121,7 @@
 
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip" value="{{(!empty($customerAddress))? $customerAddress->zip:' '}}">
+                                        <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip" >
                                       @error('zip')
                                         <span class="text-danger">
 									{{$message}}
@@ -132,7 +132,7 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile No." value="{{(!empty($customerAddress))? $customerAddress->mobile:' '}}">
+                                        <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile No." >
                                      @error('mobile')
                                         <span class="text-danger">
 									{{$message}}

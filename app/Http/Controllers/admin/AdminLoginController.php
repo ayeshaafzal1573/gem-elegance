@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
+  
     public function index(){
-    return view ('admin.login');    
+    return view ('admin.login');
     }
     //ADMIN AUTHENTICATION
     public function authenticate(Request $request){
@@ -32,7 +33,7 @@ class AdminLoginController extends Controller
             Auth::guard('admin')->logout();
          return redirect()->route('admin.login')->with('error','You Are Not Authorized to Access Admin Panel.');
         }
-   
+
     }
     // IF FALSE
     else

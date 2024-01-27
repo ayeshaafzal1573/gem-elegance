@@ -12,6 +12,7 @@ use Image;
 
 class CategoryController extends Controller
 {
+    
 public function index(Request $request)
 {
     // Start with a query to get all categories ordered by the latest

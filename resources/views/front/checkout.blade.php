@@ -194,6 +194,10 @@
                                 <div class="p"><strong>Subtotal:</strong></div>
                                 <div class="p">Rs: {{Cart::subtotal()}}</div>
                             </div>
+                              <div class="d-flex justify-content-between mt-2">
+                                <div class="h6"><strong>Discount:</strong></div>
+                                {{-- <div class="h6"id="discount_value">Rs:{{number_format($discount)}}</div> --}}
+                            </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <div class="h6"><strong>Shipping:</strong></div>
                                 <div class="h6"id="shippingAmount">Rs:{{number_format($totalShippingCharge,2)}}</div>
@@ -204,7 +208,11 @@
                             </div>
                         </div>
                     </div>
+ <div class="input-group apply-coupan mt-4">
+                        <input type="text" placeholder="Coupon Code" class="form-control" name="discount_code" id="discount_code">
+                        <button class="btn btn-dark" type="button" id="apply-discount">Apply Coupon</button>
 
+                    </div>
                     <div class="card-payment-form mt-2 ">
    <h3 class="card-title h5 mb-3">Payment Method</h3>
 
@@ -249,11 +257,12 @@
 
 <script>
  $(document).ready(function() {
-     $.ajaxSetup({
+    $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
     $("#payment_method_one").click(function() {
         if ($(this).is(":checked")) {
             $("#card-payment-form").addClass('d-none');
@@ -266,55 +275,80 @@
         }
     });
 
-  $("#orderForm").submit(function(event) {
-    event.preventDefault();
-    $('button[type="submit"]').prop('disabled', true)
+    $("#orderForm").submit(function(event) {
+        event.preventDefault();
+        $('button[type="submit"]').prop('disabled', true)
 
-    $.ajax({
-        url: '{{ route('front.processCheckout') }}',
-        type: 'post',
-        data: $(this).serializeArray(),
-        dataType: 'json',
-        success: function(response) {
-            $('button[type="submit"]').prop('disabled', false)
+        $.ajax({
+            url: '{{ route('front.processCheckout') }}',
+            type: 'post',
+            data: $(this).serializeArray(),
+            dataType: 'json',
+            success: function(response) {
+                $('button[type="submit"]').prop('disabled', false)
 
-            if (response.status == false) {
-                // Handle error response if needed
-            } else {
-                // Include the OrderId parameter in the redirect URL
-                window.location.href = "{{ route('front.thanks', ['OrderId' => ':OrderId']) }}".replace(':OrderId', response.orderId);
+                if (response.status == false) {
+                    // Handle error response if needed
+                } else {
+                    // Include the OrderId parameter in the redirect URL
+                    window.location.href = "{{ route('front.thanks', ['OrderId' => ':OrderId']) }}".replace(':OrderId', response.orderId);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle error response here
             }
-        },
-        error: function(xhr, status, error) {
-            // Handle error response here
-        }
+        });
     });
-});
 
-
-$("#country").change(function () {
-    console.log("Country changed");
-    $.ajax({
-        url: '{{ route('front.ordersummary') }}',
-        type: 'post',
-        data: { country_id: $(this).val() },
-        dataType: 'json',
-        success: function (response) {
-            console.log("AJAX success", response);
-            if (response.status) {
-                $('#shippingAmount').html('Rs: ' + response.shippingCharge);
-                $('#grandTotal').html('Rs: ' + response.grandtotal); // Change to response.grandtotal
-            } else {
-                // Handle the case where status is false
+    $("#country").change(function () {
+        console.log("Country changed");
+        $.ajax({
+            url: '{{ route('front.ordersummary') }}',
+            type: 'post',
+            data: { country_id: $(this).val() },
+            dataType: 'json',
+            success: function (response) {
+                console.log("AJAX success", response);
+                if (response.status) {
+                    $('#shippingAmount').html('Rs: ' + response.shippingCharge);
+                    $('#grandTotal').html('Rs: ' + response.grandtotal);
+                } else {
+                    // Handle the case where status is false
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX error", status, error);
+                // Handle error response here
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("AJAX error", status, error);
-            // Handle error response here
-        }
+        });
     });
+
+    // Apply Discount Click Event
+    $("#apply-discount").click(function () {
+        $.ajax({
+            url: '{{ route('front.applyDiscount') }}',
+            type: 'post',
+            data: { code: $("#discount_code").val(), country_id: $("#country").val() },
+            dataType: 'json',
+            success: function (response) {
+                console.log("AJAX success", response);
+                if (response.status) {
+                    $('#shippingAmount').html('Rs: ' + response.shippingCharge);
+                    $('#grandTotal').html('Rs: ' + response.grandtotal);
+                    $('#discount_value').html('Rs: ' + response.discount);
+                } else {
+                    // Handle the case where status is false
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX error", status, error);
+                // Handle error response here
+            }
+
+        });
+    });
+
 });
 
 
-});
 </script>

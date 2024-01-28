@@ -57,6 +57,7 @@ Route::get('/coupan/delete/{id}', [DiscountCodeController::class, 'delete'])->na
 //ORDER ROUTES
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('orders.detail');
+Route::post('/order/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
 
 });
 
@@ -91,6 +92,7 @@ Route::post('/user/authenticate',[AuthController::class,'authenticate'])->name('
     Route::group(['middleware'=>'auth'],function(){
 
 Route::get('/user/profile',[AuthController::class,'profile'])->name('account.profile');
+Route::get('/user/{id}/updateprofile', [AuthController::class, 'updateprofile'])->name('account.updateprofile');
 Route::get('/user/my-order',[AuthController::class,'order'])->name('account.order');
 Route::get('/user/order-detail/{orderId}',[AuthController::class,'orderDetail'])->name('account.orderDetail');
 Route::get('/user/logout',[AuthController::class,'logout'])->name('account.logout');

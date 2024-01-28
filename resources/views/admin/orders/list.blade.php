@@ -94,6 +94,8 @@
         <span class="cell-label text-info">Status:</span>{{ $order->status }}
     @elseif ($order->status == 'Delivered')
         <span class="cell-label text-success">Status:</span>{{ $order->status }}
+         @elseif ($order->status == 'Cancelled')
+        <span class="cell-label bg-danger">Cancelled</span>
     @endif
 </div>
   <div class="product-cell sales">

@@ -59,7 +59,7 @@
         </li>
       </ul>
       <div class="icon">
-        <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+       
         <a class="nav-link" href="{{route('front.cart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
       @if(Auth::check())
  <a class="nav-link" href="{{route('account.profile')}}"><i class="fa-solid fa-user"></i></a>

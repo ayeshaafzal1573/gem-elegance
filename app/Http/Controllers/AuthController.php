@@ -81,7 +81,45 @@ return redirect()->route('account.login')->withErrors($validator)->withInput($re
     }
     //USER PROFILE
     public function profile(){
-    return view('front.account.profile');
+        $user = User::where('id', Auth::user()->id)->first();
+    return view('front.account.profile',['user'=>$user]);
+    }
+    public function updateprofile($id, Request $request)
+    {
+
+        $user = User::find($id);
+        if (empty($user)) {
+            return redirect()->route('account.profileedit');
+        }
+    }
+    public function update(Request $request)
+    {
+        $userId = Auth::user()->id;
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $userId . ',id',
+            'phone' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            // Update user profile here
+            $user = Auth::user();
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->phone = $request->input('phone');
+            $user->save();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Profile updated successfully',
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
     }
     //USER LOGOUT
 public function logout(){

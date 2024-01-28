@@ -117,5 +117,7 @@ return view('front.new-arrivals');
 public function about(){
 return view('front.about');
 }
+public function addToWishlist(Request $request){
 
+}
 }

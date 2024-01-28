@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\admin\DiscountCodeController;
+use App\Http\Controllers\admin\OrderController;
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CartController;
@@ -53,6 +54,10 @@ Route::post('/coupan', [DiscountCodeController::class, 'store'])->name('coupan.s
 Route::get('/coupan/edit/{id}', [DiscountCodeController::class, 'edit'])->name('coupan.edit');
 Route::post('/coupan/update/{id}', [DiscountCodeController::class, 'update'])->name('coupan.update');
 Route::get('/coupan/delete/{id}', [DiscountCodeController::class, 'delete'])->name('coupan.delete');
+//ORDER ROUTES
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('orders.detail');
+
 });
 
 });
@@ -87,6 +92,7 @@ Route::post('/user/authenticate',[AuthController::class,'authenticate'])->name('
 
 Route::get('/user/profile',[AuthController::class,'profile'])->name('account.profile');
 Route::get('/user/my-order',[AuthController::class,'order'])->name('account.order');
+Route::get('/user/order-detail/{orderId}',[AuthController::class,'orderDetail'])->name('account.orderDetail');
 Route::get('/user/logout',[AuthController::class,'logout'])->name('account.logout');
 });
 });

@@ -10,6 +10,8 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
+        $role = 1; // Set the role you want to filter
+
         $users = User::latest();
 
         if ($request->has('keyword')) {
@@ -17,10 +19,11 @@ class UserController extends Controller
             $users->where('name', 'like', '%' . $request->get('keyword') . '%');
         }
 
+        // Filter users based on the 'role' column
+        $users->where('role', $role);
+
         $users = $users->get();
 
         return view("admin.users.list", compact("users"));
     }
-
-
 }

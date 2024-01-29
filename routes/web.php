@@ -62,11 +62,6 @@ Route::post('/order/change-status/{id}', [OrderController::class, 'changeOrderSt
 
 //USER ROUTES
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
-        // Route::get('/coupan/list', [DiscountCodeController::class, 'index'])->name('coupan.list');
-        // Route::post('/coupan', [DiscountCodeController::class, 'store'])->name('coupan.store');
-        // Route::get('/coupan/edit/{id}', [DiscountCodeController::class, 'edit'])->name('coupan.edit');
-        // Route::post('/coupan/update/{id}', [DiscountCodeController::class, 'update'])->name('coupan.update');
-        // Route::get('/coupan/delete/{id}', [DiscountCodeController::class, 'delete'])->name('coupan.delete');
 });
 
 });
@@ -105,6 +100,8 @@ Route::post('/user/{id}/updateprofile', [AuthController::class, 'updateprofile']
 Route::post('/user/{id}/updateaddress', [AuthController::class, 'updateAddress'])->name('account.updateaddress');
 Route::get('/user/my-order',[AuthController::class,'order'])->name('account.order');
 Route::get('/user/order-detail/{orderId}',[AuthController::class,'orderDetail'])->name('account.orderDetail');
+Route::get('/user/change-password',[AuthController::class,'showchangePasswordForm'])->name('account.changePassword');
+Route::post('/user/process-change-password',[AuthController::class,'changePassword'])->name('account.processchangePassword');
 Route::get('/user/logout',[AuthController::class,'logout'])->name('account.logout');
 });
 });

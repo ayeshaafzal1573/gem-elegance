@@ -10,6 +10,8 @@ use App\Models\OrderItem;
 use App\Models\CustomerAddress;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class AuthController extends Controller
 {
@@ -202,5 +204,59 @@ public function orderDetail($id){
         return view('front.account.order-detail',$data);
 
 }
+public function showchangePasswordForm(){
+
+        return view('front.account.change-password');
+}
+    
+
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'oldpassword' => 'required',
+            'newpassword' => 'required|min:5|same:confirm_password',
+            'confirm_password' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            $user = User::select('id', 'password')->where('id', Auth::user()->id)->first();
+
+            // Check if the old password matches the current password
+            if (!Hash::check($request->oldpassword, $user->password)) {
+                // Old password is incorrect
+                return response()->json([
+                    'status' => false,
+                    'error' => 'Your old password is incorrect',
+                ]);
+            }
+
+            // Update the password
+            User::where('id', $user->id)->update([
+                'password' => Hash::make($request->newpassword),
+            ]);
+
+            // Check if the password was successfully updated
+            if (Hash::check($request->newpassword, $user->password)) {
+                // Password successfully changed
+                return response()->json([
+                    'status' => true,
+                    'message' => 'You have successfully changed your password.',
+                ]);
+            } else {
+                // Something went wrong during the password update
+                return response()->json([
+                    'status' => false,
+                    'error' => 'An error occurred while changing the password.',
+                ]);
+            }
+        } else {
+            // Validation failed
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
+    }
+
 }
 

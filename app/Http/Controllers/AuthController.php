@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Country;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\CustomerAddress;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,18 +83,27 @@ return redirect()->route('account.login')->withErrors($validator)->withInput($re
     }
     //USER PROFILE
     public function profile(){
+        $userId = Auth::user()->id;
+        $countries = Country::orderBy('name', 'ASC')->get();
         $user = User::where('id', Auth::user()->id)->first();
-    return view('front.account.profile',['user'=>$user]);
+        $address = CustomerAddress::where('user_id',$userId)->first();
+    return view('front.account.profile',['user'=>$user,'countries'=>$countries, 'address' => $address]);
     }
-    public function updateprofile($id, Request $request)
+    public function editprofile($id, Request $request)
     {
-
+        $userId = Auth::user()->id;
         $user = User::find($id);
-        if (empty($user)) {
-            return redirect()->route('account.profileedit');
+        $countries = Country::orderBy('name', 'ASC')->get();
+        $address = CustomerAddress::where('user_id', $userId)->first();
+        if (!empty($user)) {
+            return view('front.account.editprofile', ['user' => $user, 'countries' => $countries, 'address' => $address]);
+        }
+         else {
+            return redirect()->route('account.profile');
         }
     }
-    public function update(Request $request)
+
+    public function updateprofile(Request $request)
     {
         $userId = Auth::user()->id;
 
@@ -110,10 +121,8 @@ return redirect()->route('account.login')->withErrors($validator)->withInput($re
             $user->phone = $request->input('phone');
             $user->save();
 
-            return response()->json([
-                'status' => true,
-                'message' => 'Profile updated successfully',
-            ]);
+            return redirect()->route('account.profile');
+
         } else {
             return response()->json([
                 'status' => false,
@@ -121,6 +130,54 @@ return redirect()->route('account.login')->withErrors($validator)->withInput($re
             ]);
         }
     }
+    public function updateAddress(Request $request)
+    {
+        $userId = Auth::user()->id;
+
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:customer_addresses,email,' . $userId . ',user_id',
+            'mobile' => 'required',
+            'address' => 'required',
+            'apartment' => 'nullable',
+            'state' => 'required',
+            'city' => 'required',
+            'zip' => 'required',
+            'country' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            // Find the customer address record
+            $address = CustomerAddress::where('user_id', $userId)->first();
+
+            // Check if the address record exists
+            if ($address) {
+                // Update user profile here
+                $address->first_name = $request->first_name;
+                $address->last_name = $request->last_name;
+                $address->email = $request->email;
+                $address->mobile = $request->mobile;
+                $address->address = $request->address;
+                $address->apartment = $request->apartment;
+                $address->state = $request->state;
+                $address->city = $request->city;
+                $address->zip = $request->zip;
+                $address->country_id = $request->country;
+                $address->save();
+
+                return redirect()->route('account.profile');
+            } else {
+                return redirect()->route('account.profile')->with('error', 'Address not found for the user.');
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
+    }
+
     //USER LOGOUT
 public function logout(){
 Auth::logout();

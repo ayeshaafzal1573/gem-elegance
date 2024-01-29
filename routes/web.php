@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\admin\DiscountCodeController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\UserController;
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CartController;
@@ -59,6 +60,13 @@ Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('orders.detail');
 Route::post('/order/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
 
+//USER ROUTES
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        // Route::get('/coupan/list', [DiscountCodeController::class, 'index'])->name('coupan.list');
+        // Route::post('/coupan', [DiscountCodeController::class, 'store'])->name('coupan.store');
+        // Route::get('/coupan/edit/{id}', [DiscountCodeController::class, 'edit'])->name('coupan.edit');
+        // Route::post('/coupan/update/{id}', [DiscountCodeController::class, 'update'])->name('coupan.update');
+        // Route::get('/coupan/delete/{id}', [DiscountCodeController::class, 'delete'])->name('coupan.delete');
 });
 
 });
@@ -92,7 +100,9 @@ Route::post('/user/authenticate',[AuthController::class,'authenticate'])->name('
     Route::group(['middleware'=>'auth'],function(){
 
 Route::get('/user/profile',[AuthController::class,'profile'])->name('account.profile');
-Route::get('/user/{id}/updateprofile', [AuthController::class, 'updateprofile'])->name('account.updateprofile');
+Route::get('/user/{id}/editprofile', [AuthController::class, 'editprofile'])->name('account.editprofile');
+Route::post('/user/{id}/updateprofile', [AuthController::class, 'updateprofile'])->name('account.updateprofile');
+Route::post('/user/{id}/updateaddress', [AuthController::class, 'updateAddress'])->name('account.updateaddress');
 Route::get('/user/my-order',[AuthController::class,'order'])->name('account.order');
 Route::get('/user/order-detail/{orderId}',[AuthController::class,'orderDetail'])->name('account.orderDetail');
 Route::get('/user/logout',[AuthController::class,'logout'])->name('account.logout');

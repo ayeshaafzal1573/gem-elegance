@@ -208,7 +208,7 @@ public function showchangePasswordForm(){
 
         return view('front.account.change-password');
 }
-    
+
 
     public function changePassword(Request $request)
     {
@@ -257,6 +257,6 @@ public function showchangePasswordForm(){
             ]);
         }
     }
-
+  
 }
 

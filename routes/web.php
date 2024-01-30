@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\HomeController;
@@ -26,7 +27,12 @@ Route::post('/authenticate',[AdminLoginController::class,'authenticate'])->name(
 Route::group(['middleware'=>'admin.auth'],function(){
 //IF ADMIN IS AUTHENTICATED
 Route::get('/dashboard',[HomeController::class,'index'])->name('admin.dashboard');
-// IF ADMIN IS NOT AUTHENTICATED
+        Route::get('/showchange-password', [SettingController::class, 'showChangePassword'])->name('admin.showChangePassword');
+        Route::post('/change-password', [SettingController::class, 'processChangePassword'])->name('account.adminchangePassword');
+
+
+
+        // IF ADMIN IS NOT AUTHENTICATED
 Route::get('/logout',[HomeController::class,'logout'])->name('admin.logout');
 // CATEGORY ROUTES
 Route::get('category/list', [CategoryController::class, 'index'])->name('category.list');
@@ -89,7 +95,6 @@ Route::get('/user/register',[AuthController::class,'register'])->name('account.r
 Route::post('/process/register',[AuthController::class,'processRegister'])->name('account.processregister');
 Route::get('/user/login',[AuthController::class,'login'])->name('account.login');
 Route::post('/user/authenticate',[AuthController::class,'authenticate'])->name('account.authenticate');
-
 
 });
     Route::group(['middleware'=>'auth'],function(){

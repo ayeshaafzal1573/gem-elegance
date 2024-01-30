@@ -1,8 +1,9 @@
 @extends('admin.layouts.app')
 
 @section('content')
- 	
+
   <div class="app-content">
+
     <div class="app-content-header">
       <h1 class="app-content-headerText">Create Category</h1>
       <button class="mode-switch" title="Switch Theme">
@@ -15,8 +16,20 @@
       <button class="app-content-headerButton">Back</button>
       </a>
     </div>
-    <div class="app-content-actions">
-     
+    <div class="app-content-actions" >
+      <div class="app-content-actions-wrapper" hidden>
+        <div class="filter-button-wrapper" >
+          <button class="action-button filter jsFilter"><span>Filter</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
+
+
+        </div>
+        <button class="action-button list active" title="List View" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+        <button class="action-button grid" title="Grid View">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </button>
+      </div>
     </div>
     <form action="{{route('category.insert')}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -25,12 +38,18 @@
         <label for="Category Name">Category Name:</label>
         <input class="category-input form-control" placeholder="Enter Category Name" type="text" name="name">
     </div>
+      @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
     </div>
      <div class="row mb-3">
     <div class="col-md-12">
         <label for="Category Name">Category Slug:</label>
         <input class="category-input form-control" placeholder="Enter Category Name" type="text" name="slug">
     </div>
+      @error('slug')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
     </div>
     <div class="row mb-3">
  <div class="col-md-12">
@@ -39,15 +58,23 @@
             <option value="1">Active</option>
             <option value="0">Block</option>
         </select>
+          @error('status')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
     </div>
+
     </div>
+
 <div class="row mb-3">
     <div class="col-md-12">
         <label for="image">Image</label>
         <input type="file" name="image" id="image" class="form-control category-input" onchange="previewImage()">
     </div>
-</div>
 
+</div>
+ @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
 <div class="row mb-3">
     <div class="col-md-12">
         <img id="image-preview" src="#" alt="Image Preview" style="max-width: 100%; display: none;">
@@ -61,7 +88,11 @@
             <option value="1">Yes</option>
             <option value="0">No</option>
         </select>
+         @error('show')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
     </div>
+
     <div class="col-md-6">
         <label for="gender">Gender</label>
         <select name="gender" id="gender" class="form-control category-input">
@@ -69,7 +100,11 @@
             <option value="Female">Female</option>
             <option value="Other">Other</option>
         </select>
+           @error('gender')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
     </div>
+
 </div>
 <input type="submit" value="Create" class="app-content-headerButton">
     </form>

@@ -31,12 +31,12 @@
             </div>
 
             <input type="submit" value="Login">
-            
+
         </form>
     </main>
     </div>
         </div>
-        <div class="col-md-3"></div>
+     
     </div>
 
 

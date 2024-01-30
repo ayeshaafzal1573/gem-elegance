@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua&family=Nunito:wght@300&display=swap');
 * {
   box-sizing: border-box;
- 
+
 }
 
 :root {
@@ -140,7 +140,7 @@ body {
   display: flex;
   align-items: center;
   padding: 16px;
- 
+
 }
 /* Add this to your existing CSS */
 
@@ -157,7 +157,7 @@ body {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 100;
- 
+
 }
 
 .dropdown-content a {
@@ -671,4 +671,13 @@ overflow: auto;
 .category-input:focus {
   outline: none;
   border-color: var(--action-color);
+}
+.shipping-table{
+background-color: var(--app-bg);
+}
+.shipping-table table{
+  border: none;
+}
+.shipping-table .shipping-row td,tr,th{
+  border: none;
 }

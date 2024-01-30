@@ -12,7 +12,7 @@ use Image;
 
 class CategoryController extends Controller
 {
-    
+
 public function index(Request $request)
 {
     // Start with a query to get all categories ordered by the latest
@@ -48,7 +48,7 @@ public function insert(Request $request)
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('category.list')->withErrors($validator)->withInput();
+        return redirect()->route('category.create')->withErrors($validator);
     }
 
     $category = new Category();

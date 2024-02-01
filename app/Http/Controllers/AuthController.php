@@ -31,6 +31,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
+            'phone' => 'required',
             'password' => 'required|min:5|confirmed',
         ]);
 
@@ -38,6 +39,7 @@ class AuthController extends Controller
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
+            $user->phone = $request->phone;
             $user->password = bcrypt($request->password);
             $user->save();
 
@@ -257,6 +259,6 @@ public function showchangePasswordForm(){
             ]);
         }
     }
-  
+
 }
 

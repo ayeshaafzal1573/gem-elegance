@@ -1,5 +1,11 @@
 @extends('front.layouts.app')
 @section('content')
+    <script>
+        // Check for the error message and display an alert
+        @if(session('error'))
+            alert('{{ session('error') }}');
+        @endif
+    </script>
 <div class="container mb-5 mt-2">
     <div class="row">
         <div class="col-md-4"></div>
@@ -36,7 +42,7 @@
     </main>
     </div>
         </div>
-     
+
     </div>
 
 

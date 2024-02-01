@@ -1,17 +1,27 @@
 @extends('front.layouts.app')
 
 @section('content')
+ <form action="{{ route('account.processregister') }}" method="post" name="registrationForm" id="registrationForm">
+    @csrf
+<div class="form-structor">
+    <img src="{{ asset( "../front-assets/images/register.jpg") }}" alt="" width="500">
+	<div class="signup">
+		<h2 class="form-title" id="signup">Sign up</h2>
+		<div class="form-holder">
+		 <input type="text" name="name" placeholder="Name" class="input">
+			<input type="email" class="input" placeholder="Email"name="email"  />
+			<input type="number" class="input" placeholder="Phone Number" name="phone"  />
+			<input type="password" class="input" placeholder="Password"  name="password" />
+			<input type="password" class="input" placeholder="Confirm Password" name="password_confirmation"  />
+		</div>
+		  <button type="submit" class="submit-btn">Register</button>
+	</div>
 
-    <form action="{{ route('account.processregister') }}" method="post" name="registrationForm" id="registrationForm">
-        @csrf
-        <h2>REGISTER</h2>
-        <input type="text" name="name" placeholder="Name">
-        <input type="email" name="email" placeholder="Email">
+</div>
 
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="password_confirmation" placeholder="Confirm Password">
-        <button type="submit">Register</button>
     </form>
+
+
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

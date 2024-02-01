@@ -1,0 +1,192 @@
+/* USER LOGIN */
+.box {
+    position: relative;
+    width: 380px;
+    height: 1020px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.box::before {
+    width: 380px;
+    height: 420px;
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    transform-origin: bottom right;
+    background: linear-gradient(0deg, transparent, transparent, #A27F61, #E5DCC8, #C5B19E);
+    z-index: 1;
+    animation: animate 6s linear infinite;
+}
+
+.box::after {
+    width: 380px;
+    height: 420px;
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    transform-origin: bottom right;
+    background: linear-gradient(0deg, transparent, transparent, #A27F61,
+            #E5DCC8,
+            #C5B19E);
+    z-index: 1;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+
+.border-line {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.border-line::before {
+    width: 400px;
+    height: 420px;
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    transform-origin: bottom right;
+    background: linear-gradient(0deg, transparent, transparent, #A27F61, #E5DCC8, #8b603b);
+    z-index: 1;
+    animation: animate 6s linear infinite;
+    animation-delay: -1.5s;
+}
+
+.border-line::after {
+    width: 380px;
+    height: 420px;
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    transform-origin: bottom right;
+    background: linear-gradient(0deg, transparent, transparent, #A27F61,
+            #E5DCC8,
+            #8b603b);
+    z-index: 1;
+    animation: animate 6s linear infinite;
+    animation-delay: -4.5s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.box form {
+    background: #EDE7E1;
+    position: absolute;
+    inset: 4px;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.box form h2 {
+    color: black;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.1rem;
+}
+
+.box form .input-box {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.box form .input-box input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    color: white;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.box form .input-box span {
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    color: #C5B19E;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    transition: 0.5s;
+}
+
+.box form .input-box input:valid~span,
+.box form .input-box input:focus~span {
+    color: #8b603b;
+    font-size: 0.75rem;
+    transform: translateY(-34px);
+}
+
+.box form .input-box i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #8b603b;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.box form .input-box input:valid~i,
+.box form .input-box input:focus~i {
+    height: 44px;
+}
+
+
+.box form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 9px 25px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background: #A27F61;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    width: 100px;
+    margin-left: 100px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+.box form input[type="submit"]:hover,
+.box form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+@media (max-width: 400px) {
+    .box form {
+        padding: 50px 30px;
+    }
+}
+
+/* LOGIN END */

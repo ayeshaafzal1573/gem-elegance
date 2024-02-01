@@ -59,14 +59,28 @@
         </li>
       </ul>
       <div class="icon">
-       
-        <a class="nav-link" href="{{route('front.cart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-      @if(Auth::check())
- <a class="nav-link" href="{{route('account.profile')}}"><i class="fa-solid fa-user"></i></a>
-      @else
-       <a class="nav-link" href="{{route('account.register')}}"><i class="fa-solid fa-user"></i></a>
 
-      @endif
+        <a class="nav-link" href="{{route('front.cart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+      <div class="dropdown">
+    <a class="nav-link" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa-solid fa-user"></i>
+    </a>
+
+    <div class="dropdown-menu" id="user-dropdown" aria-labelledby="userDropdown">
+       @if(Auth::check())
+            <!-- User is logged in -->
+            <a class="dropdown-item" href="{{ route('account.profile') }}">Profile</a>
+            <a class="dropdown-item" href="{{ route('account.logout') }}">Logout</a>
+        @else
+            <!-- User is not logged in -->
+            <a class="dropdown-item" href="{{ route('admin.login') }}">Admin</a>
+            <a class="dropdown-item" href="{{ route('account.register') }}">Sign Up</a>
+            <a class="dropdown-item" href="{{ route('account.login') }}">Login</a>
+        @endif
+    </div>
+     </div>
+</div>
+
        </div>
     </div>
   </div>

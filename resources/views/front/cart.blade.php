@@ -93,8 +93,7 @@
 </div>
 
 
-               <button type="button" class="btn btn-primary  btn-block" id="btn-checkout"><a href="{{route('front.checkout')}}">Checkout</a></button>'
-
+               <button type="button" class="btn" id="btn-checkout"><a href="{{route('front.checkout')}}">Checkout</a></button>
             </div>
         </div>
     </div>

@@ -131,15 +131,15 @@ public function deleteItem($rowId)
         $countries = Country::orderBy('name', 'ASC')->get();
         $subTotal = Cart::subtotal(2, '.', '');
         //APPLY DISCOUNT HERE
-//         if (session()->has('code')) {
-//             $code = session()->get('code');
-//             if ($code->type == 'percent') {
-//                 $discount = ($code->discount_amount / 100) * $subTotal;
-//             } else {
-//                 $discount = $code->discount_amount;
-//
-//             }
-//             //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
+        if (session()->has('code')) {
+            $code = session()->get('code');
+            if ($code->type == 'percent') {
+                $discount = ($code->discount_amount / 100) * $subTotal;
+            } else {
+                $discount = $code->discount_amount;
+
+            }
+            //             //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
             if ($customerAddress != '') {
                 $userCountry = $customerAddress->country_id;
                 $shippingInfo = Shipping::where('country_id', $userCountry)->first();
@@ -168,7 +168,7 @@ public function deleteItem($rowId)
             );
 
         }
-
+    }
 public function processCheckout(Request $request)
 {
     // STEP-1 apply validation
@@ -224,12 +224,12 @@ public function processCheckout(Request $request)
         }
         if ($shippingInfo != null) {
             $shipping = $shippingInfo->amount;
-            $grandtotal = $subtotal + $shipping;
+            $grandtotal = $subtotal + $shipping+$discount;
         }
      else {
         $shippingInfo = Shipping::where('country_id', 'restofworld')->first();
             $shipping = $shippingInfo->amount;
-            $grandtotal = $subtotal + $shipping;
+            $grandtotal = $subtotal + $shipping+$discount;
         }
 
 
@@ -288,7 +288,7 @@ public function getOrderSummary(Request $request)
 if(session()->has('code')){
 $code=session()->get('code');
 if($code->type=='percent'){
-$discount=($code->discount_amount/100)*$subTotal;
+$discount=($code->discount_amount/100)*$subtotal;
 }
 else{
 $discount=$code->discount_amount;

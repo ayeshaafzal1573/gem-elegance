@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 @section('content')
 <main>
-    <section class="section-5 pt-3 pb-3 mb-3 bg-white">
+    <section class="section-5">
         <div class="container">
             <h3 class="women-heading">
      CHECKOUT <br />
@@ -17,11 +17,12 @@
             <form action="{{route('front.processCheckout')}}" name="orderForm" id="orderForm" method="post">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="sub-title text-center">
-                        <h4>Shipping Address</h2>
-                    </div>
+
                     <div class="card">
                         <div class="card-body checkout-form">
+                              <div class="sub-title text-center mb-2">
+                        <h4>Shipping Address</h2>
+                    </div>
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -165,7 +166,7 @@
                     <div class="card cart-summary">
                         <div class="card-body">
                             @foreach (Cart::content() as $item )
- <div class="d-flex justify-content-between pb-2">
+ <div class="d-flex  pb-2">
     <div class="checkout-image">
      @if ($item->options->has('images'))
                                         @if (is_string($item->options['images']))
@@ -174,7 +175,7 @@
                                         @else
                                             <!-- Handle the case where 'images' is an object (e.g., Eloquent collection) -->
                                             @if ($item->options['images']->isNotEmpty())
-                                                <img class="img-fluid mx-auto d-block image" src="{{ asset('/' . $item->options['images']->first()->image_path) }}" alt="Product Image">
+                                                <img class="img-fluid image" src="{{ asset('/' . $item->options['images']->first()->image_path) }}" alt="Product Image">
                                             @else
                                                 <span>No image available</span>
                                             @endif
@@ -184,19 +185,23 @@
 
                                         @endif
          </div>
-                                        <div class="h6">{{$item->name}} x {{$item->qty}}</div>
-                                <div class="h6">Rs: {{$item->price*$item->qty}}</div>
+                                        <div class="h6" >{{$item->name}} x {{$item->qty}}</div>
+
                             </div>
 
                             @endforeach
 <hr>
                             <div class="d-flex justify-content-between summary-end">
-                                <div class="p"><strong>Subtotal:</strong></div>
+                                <div class="h6"><strong>Price:</strong></div>
+                                <div class="p">Rs: {{$item->price*$item->qty}}</div>
+                            </div>
+                            <div class="d-flex justify-content-between summary-end mt-1">
+                                <div class="h6"><strong>Subtotal:</strong></div>
                                 <div class="p">Rs: {{Cart::subtotal()}}</div>
                             </div>
                               <div class="d-flex justify-content-between mt-2">
                                 <div class="h6"><strong>Discount:</strong></div>
-                                {{-- <div class="h6"id="discount_value">Rs:{{number_format($discount)}}</div> --}}
+                                <div class="h6"id="discount_value">Rs:{{number_format($discount)}}</div>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <div class="h6"><strong>Shipping:</strong></div>

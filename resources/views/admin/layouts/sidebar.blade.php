@@ -3,7 +3,7 @@
 
      <div class="account-info">
     <div class="account-info-picture">
-        <img src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="Account">
+        <img src="{{asset('../admin-assets/images/profile.png')}}" alt="Account">
     </div>
     <div class="account-info-name">{{ Auth::guard('admin')->user()->name }}</div>
     <div class="dropdown">

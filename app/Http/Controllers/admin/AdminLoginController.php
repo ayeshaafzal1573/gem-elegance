@@ -9,40 +9,40 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
-  
+
     public function index(){
     return view ('admin.login');
     }
     //ADMIN AUTHENTICATION
-    public function authenticate(Request $request){
-        //VALIDATION
-    $validator = Validator::make($request->all(),[
-        'email'=>'required|email',
-        'password'=>'required'
+   public function authenticate(Request $request)
+{
+    // Validation
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email',
+        'password' => 'required',
     ]);
-    //IF VALIDATION IS CORRECT IT WILL GO TO ADMIN DASHBOARD
-    if($validator->passes()){
-    if(Auth::guard('admin')
-    ->attempt(['email' => $request->email, 'password' => $request->password],$request->get('remember')))
-    {
-        $admin=Auth::guard('admin')->user();
-        if($admin->role ==2){
-         return redirect()->route('admin.dashboard');
-        }
-        else{
-            Auth::guard('admin')->logout();
-         return redirect()->route('admin.login')->with('error','You Are Not Authorized to Access Admin Panel.');
-        }
 
-    }
-    // IF FALSE
-    else
-    {
-    return redirect()->route('admin.login')->with('error','Either Email/Password is Incorrect');
+    // Check if validation passes
+    if ($validator->passes()) {
+        // Attempt to authenticate
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            $admin = Auth::guard('admin')->user();
+
+            // Check if the role is 2 (adjust this condition based on your user roles)
+            if ($admin->role == 2) {
+                return redirect()->route('admin.dashboard');
+            } else {
+                Auth::guard('admin')->logout();
+                return redirect()->route('admin.login')->with('error', 'You Are Not Authorized to Access Admin Panel.');
+            }
+        } else {
+            // Authentication failed
+            return redirect()->route('admin.login')->with('error', 'Either Email/Password is Incorrect');
+        }
+    } else {
+        // Validation failed
+        return redirect()->route('admin.login')->withErrors($validator)->withInput($request->only('email'));
     }
 }
-    else{
-    return redirect()->route('admin.login')->withErrors($validator)->withInput($request->only('email'));
-    }
-    }
+
 }

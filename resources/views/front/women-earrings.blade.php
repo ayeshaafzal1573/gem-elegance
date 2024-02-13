@@ -17,13 +17,6 @@
 
 <div class="container">
     <div class="row justify-content-center">
-
-    @php
-        $filteredProducts = $products->filter(function ($product) {
-            return $product->category_id === 5;
-        });
-    @endphp
-
     @if($filteredProducts->isNotEmpty())
         @foreach ($filteredProducts as $product)
             <div class="col-sm-4 col-md-5 col-lg-4 col-xl-4 rings">

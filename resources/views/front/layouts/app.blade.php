@@ -34,26 +34,14 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            WOMEN
+            CATEGORY
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownWomen">
-            <a class="dropdown-item" href="{{route('front.women')}}">All</a>
-            <a class="dropdown-item" href="{{route('front.women-earrings')}}">Earrings</a>
-            <a class="dropdown-item" href="{{route('front.women-necklace')}}">Necklace</a>
-            <a class="dropdown-item" href="{{route('front.women-rings')}}">Rings</a>
+            <a class="dropdown-item" href="{{route('front.men')}}">Men</a>
+            <a class="dropdown-item" href="{{route('front.women')}}">Women</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMen" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            MEN
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMen">
-            <a class="dropdown-item" href="{{route('front.men')}}">All</a>
-            <a class="dropdown-item" href="{{route('front.men-watches')}}">Watch</a>
-            <a class="dropdown-item" href="{{route('front.men-necklace')}}">Necklace</a>
-            <a class="dropdown-item" href="{{route('front.men-rings')}}">Rings</a>
-          </div>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{{route('front.about')}}">ABOUT</a>
         </li>

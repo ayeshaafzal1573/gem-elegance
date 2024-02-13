@@ -109,12 +109,6 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('/user/logout', [AuthController::class, 'logout'])->name('account.logout');
     });
 });
-//women
-Route::get('/product/women/{type}', [FrontendController::class, 'showProducts'])->name('front.women-products');
-//men
-Route::get('/product/men-watch', [FrontendController::class, 'menwatch'])->name('front.men-watches');
-Route::get('/product/men-rings', [FrontendController::class, 'menrings'])->name('front.men-rings');
-Route::get('/product/men-necklace', [FrontendController::class, 'mennecklace'])->name('front.men-necklace');
-
 Route::get('/category/men', [FrontendController::class, 'showMen'])->name('front.men');
 Route::get('/category/women', [FrontendController::class, 'showWomen'])->name('front.women');
+Route::get('/products/{categorySlug}', [FrontendController::class, 'Products'])->name("front.products");

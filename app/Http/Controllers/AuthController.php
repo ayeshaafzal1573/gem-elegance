@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\CustomerAddress;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,12 +21,12 @@ class AuthController extends Controller
     {
         return view('front.account.login');
     }
-//USER REGISTER
+    //USER REGISTER
     public function register()
     {
         return view('front.account.register');
     }
-//USER INSERT
+    //USER INSERT
     public function processRegister(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -48,7 +49,7 @@ class AuthController extends Controller
                 'message' => 'Registration successful',
 
             ]);
-                return view('front.account.login');
+            return view('front.account.login');
         } else {
             return response()->json([
                 'status' => false,
@@ -56,42 +57,44 @@ class AuthController extends Controller
             ]);
         }
     }
-// USER AUTHENTICATE THEN GO TO PROFILE
-public function authenticate(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+    // USER AUTHENTICATE THEN GO TO PROFILE
+    public function authenticate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    if ($validator->passes()) {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        if ($validator->passes()) {
+            $email = $request->input('email');
+            $password = $request->input('password');
 
-        if (Auth::attempt(['email' => $email, 'password' => $password], $request->get('remember'))) {
-               }
-            if(session()->has('url.intended')){
-                return redirect(session()->get('url.intended'));
-    }
-
-
-        else {
-            session()->flash('error', 'Either email/password is incorrect');
-            return redirect()->route('account.login');
+            if (Auth::attempt(['email' => $email, 'password' => $password], $request->get('remember'))) {
+                // Check if the user has items in the cart
+                if (Cart::count() > 0) {
+                    // Redirect to the cart page
+                    return redirect()->route('front.cart');
+                } else {
+                    // Redirect to the profile page
+                    return redirect()->route('account.profile');
+                }
+            } else {
+                session()->flash('error', 'Either email/password is incorrect');
+                return redirect()->route('account.login');
+            }
         }
     }
 
-else{
-return redirect()->route('account.login')->withErrors($validator)->withInput($request->only('email'));
-}
-    }
+
+
     //USER PROFILE
-    public function profile(){
+    public function profile()
+    {
         $userId = Auth::user()->id;
         $countries = Country::orderBy('name', 'ASC')->get();
         $user = User::where('id', Auth::user()->id)->first();
-        $address = CustomerAddress::where('user_id',$userId)->first();
-    return view('front.account.profile',['user'=>$user,'countries'=>$countries, 'address' => $address]);
+        $address = CustomerAddress::where('user_id', $userId)->first();
+        return view('front.account.profile', ['user' => $user, 'countries' => $countries, 'address' => $address]);
     }
     public function editprofile($id, Request $request)
     {
@@ -101,8 +104,7 @@ return redirect()->route('account.login')->withErrors($validator)->withInput($re
         $address = CustomerAddress::where('user_id', $userId)->first();
         if (!empty($user)) {
             return view('front.account.editprofile', ['user' => $user, 'countries' => $countries, 'address' => $address]);
-        }
-         else {
+        } else {
             return redirect()->route('account.profile');
         }
     }
@@ -183,33 +185,37 @@ return redirect()->route('account.login')->withErrors($validator)->withInput($re
     }
 
     //USER LOGOUT
-public function logout(){
-Auth::logout();
-return redirect()->route('account.login')->with('success','You sucessfully logout');
-}
-//USER ORDER INFO
-public function order(){
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('account.login')->with('success', 'You sucessfully logout');
+    }
+    //USER ORDER INFO
+    public function order()
+    {
         $data = [];
-    $user = Auth::user();
+        $user = Auth::user();
 
-        $orders=Order::where('user_id',$user->id)->orderBy('created_at','DESC')->get();
+        $orders = Order::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
         $data['orders'] = $orders;
-        return view('front.account.order',$data);
-}
-public function orderDetail($id){
+        return view('front.account.order', $data);
+    }
+    public function orderDetail($id)
+    {
         $data = [];
         $user = Auth::user();
         $order = Order::where('user_id', $user->id)->where('id', $id)->first();
-        $data ['order']=$order;
-        $orderItems=OrderItem::where('order_id', $id)->get();
+        $data['order'] = $order;
+        $orderItems = OrderItem::where('order_id', $id)->get();
         $data['orderItems'] = $orderItems;
-        return view('front.account.order-detail',$data);
+        return view('front.account.order-detail', $data);
 
-}
-public function showchangePasswordForm(){
+    }
+    public function showchangePasswordForm()
+    {
 
         return view('front.account.change-password');
-}
+    }
 
 
     public function changePassword(Request $request)

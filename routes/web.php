@@ -10,7 +10,6 @@ use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\admin\DiscountCodeController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\UserController;
-
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
@@ -75,6 +74,10 @@ Route::get('/', [FrontendController::class, 'index'])->name('front.index');
 Route::get('/{slug}', [FrontendController::class, 'detail'])->name('front.product-detail');
 Route::get('/front/new-arrival', [FrontendController::class, 'newarrival'])->name('front.newarrival');
 Route::get('/front/about', [FrontendController::class, 'about'])->name('front.about');
+Route::get('/category/men', [FrontendController::class, 'showMen'])->name('front.men');
+Route::get('/category/women', [FrontendController::class, 'showWomen'])->name('front.women');
+Route::get('/products/{categorySlug}', [FrontendController::class, 'Products'])->name("front.products");
+
 //CART
 Route::get('/product/cart', [CartController::class, 'cart'])->name('front.cart');
 Route::post('/product/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
@@ -109,6 +112,3 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('/user/logout', [AuthController::class, 'logout'])->name('account.logout');
     });
 });
-Route::get('/category/men', [FrontendController::class, 'showMen'])->name('front.men');
-Route::get('/category/women', [FrontendController::class, 'showWomen'])->name('front.women');
-Route::get('/products/{categorySlug}', [FrontendController::class, 'Products'])->name("front.products");

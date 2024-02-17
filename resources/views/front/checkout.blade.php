@@ -281,14 +281,14 @@
                 $('button[type="submit"]').prop('disabled', false)
 
                 if (response.status == false) {
-                    // Handle error response if needed
+               alert("Try Again")
                 } else {
-                    // Include the OrderId parameter in the redirect URL
+
                     window.location.href = "{{ route('front.thanks', ['OrderId' => ':OrderId']) }}".replace(':OrderId', response.orderId);
                 }
             },
             error: function(xhr, status, error) {
-                // Handle error response here
+
             }
         });
     });
@@ -305,19 +305,16 @@
                 if (response.status) {
                     $('#shippingAmount').html('Rs: ' + response.shippingCharge);
                     $('#grandTotal').html('Rs: ' + response.grandtotal);
-                } else {
-                    // Handle the case where status is false
                 }
             },
             error: function (xhr, status, error) {
                 console.error("AJAX error", status, error);
-                // Handle error response here
+
             }
         });
     });
 
-    // Apply Discount Click Event
-  // Apply Discount Click Event
+   // Apply Discount Click Event
 $("#apply-discount").click(function () {
     $.ajax({
         url: '{{ route('front.applyDiscount') }}',
@@ -329,19 +326,23 @@ $("#apply-discount").click(function () {
             if (response.status) {
                 $('#shippingAmount').html('Rs: ' + response.shippingCharge);
                 $('#grandTotal').html('Rs: ' + response.grandtotal);
-                $('#discount_value').html('Rs: ' + response.discount);
-                // Update the discount variable here
-                discount = response.discount; // Add this line
+                $('#discount_code').html('Rs: ' + response.discount);
             } else {
-                // Handle the case where status is false
+                // Check if the message is 'Invalid discount coupon'
+                if (response.message === 'Invalid discount coupon') {
+                    alert('Invalid discount coupon');
+
+                }
             }
         },
         error: function (xhr, status, error) {
             console.error("AJAX error", status, error);
-            // Handle error response here
+            
         }
+
     });
 });
+
 
     });
 

@@ -209,28 +209,30 @@ class CartController extends Controller
 
         // Process the order
         if ($request->payment_method == 'cod') {
-            $shipping = 0;
+            // Calculate discount
             $discount = 0;
-            $subtotal = Cart::subtotal('2', '.', '');
-            //CALCULATE SHIPPING
-            $shippingInfo = Shipping::where('country_id', $request->country)->first();
-            $totalQty = 0;
-            foreach (Cart::content() as $item) {
-                $totalQty += $item->qty;
+            if (session()->has('code')) {
+                $discount = session()->get('code')->discount_amount;
             }
+
+            // Calculate shipping charge
+            $shipping = 0;
+            $shippingInfo = Shipping::where('country_id', $request->country)->first();
             if ($shippingInfo != null) {
                 $shipping = $shippingInfo->amount;
-                $grandtotal = $subtotal + $shipping + $discount;
-            } else {
-                $shippingInfo = Shipping::where('country_id', 'restofworld')->first();
-                $shipping = $shippingInfo->amount;
-                $grandtotal = $subtotal + $shipping + $discount;
             }
 
+            // Calculate subtotal
+            $subtotal = Cart::subtotal(2, '.', '');
 
+            // Calculate grand total
+            $grandtotal = $subtotal + $shipping - $discount;
+
+            // Save order
             $order = new Order;
             $order->subtotal = $subtotal;
             $order->shipping = $shipping;
+            $order->discount = $discount;
             $order->grand_total = $grandtotal;
             $order->user_id = $user->id;
             $order->payment_status = 'Not Paid';
@@ -249,29 +251,30 @@ class CartController extends Controller
             $order->country_id = $request->country;
             $order->save();
 
-            // You can also save order items here using Cart::content()
-        }
-        //STEP-4 store order items in order items table
-        foreach (Cart::content() as $item) {
-            $orderItem = new OrderItem;
-            $orderItem->product_id = $item->id;
-            $orderItem->order_id = $order->id;
-            $orderItem->name = $item->name;
-            $orderItem->qty = $item->qty;
-            $orderItem->price = $item->price;
-            $orderItem->total = $item->price * $item->qty;
-            $orderItem->save();
+            // Save order items
+            foreach (Cart::content() as $item) {
+                $orderItem = new OrderItem;
+                $orderItem->product_id = $item->id;
+                $orderItem->order_id = $order->id;
+                $orderItem->name = $item->name;
+                $orderItem->qty = $item->qty;
+                $orderItem->price = $item->price;
+                $orderItem->total = $item->price * $item->qty;
+                $orderItem->save();
+            }
 
-        }
-        Cart::destroy();
+            // Clear cart after order processing
+            Cart::destroy();
 
-        return response()->json([
-            'message' => 'Order saved successfully',
-            'orderId' => $order->id,
-            'status' => true,
-            'user_address' => $userAddress,
-        ]);
+            return response()->json([
+                'message' => 'Order saved successfully',
+                'orderId' => $order->id,
+                'status' => true,
+                'user_address' => $userAddress,
+            ]);
+        }
     }
+
     public function thankyou($id)
     {
 
@@ -321,7 +324,7 @@ class CartController extends Controller
     public function applyDiscount(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'code' => 'required|string',
+            'code' => 'required',
         ]);
 
         if ($validator->fails()) {

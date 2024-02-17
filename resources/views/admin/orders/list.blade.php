@@ -44,11 +44,7 @@
     <div class="products-area-wrapper tableView">
       <div class="products-header">
 
-        <div class="product-cell image">
-          ID
-          <button class="sort-button">
-            </button>
-        </div>
+
 
         <div class="product-cell status-cell">Customer<button class="sort-button">
           </button></div>
@@ -67,11 +63,9 @@
  @if($orders->get()->isNotEmpty())
    @foreach($orders->get() as $order)
         <div class="products-row">
+
             <div class="product-cell sales">
-          <span class="cell-label">ID:</span>{{ $order->id }}
-         </div>
-            <div class="product-cell sales">
-                 <a href="{{route('orders.detail',$order->id)}}" style="text-decoration: none;color:black;">
+                 <a href="{{route('orders.detail',$order->id)}}" style="text-decoration: none;color:black; text-align:right;">
 
                     <span class="cell-label">Name:</span>{{ $order->name }}
      </a>

@@ -143,16 +143,7 @@
                                 </div>
 
 
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <textarea name="`notes" id="order_notes" cols="30" rows="2" placeholder="Order Notes (optional)" class="form-control" value="{{(!empty($customerAddress))? $customerAddress->notes:' '}}"></textarea>
-                                      @error('notes')
-                                        <span class="text-danger">
-									{{$message}}
-								</span>
-                                    @enderror
-                                    </div>
-                                </div>
+
 
                             </div>
                         </div>
@@ -248,9 +239,6 @@
                     </div>
     <button type="submit" class="btn" id="btn-pay">Pay Now</button>
 
-
-                    <!-- CREDIT CARD FORM ENDS HERE -->
-
                 </div>
             </div>
                 </form>
@@ -329,31 +317,34 @@
     });
 
     // Apply Discount Click Event
-    $("#apply-discount").click(function () {
-        $.ajax({
-            url: '{{ route('front.applyDiscount') }}',
-            type: 'post',
-            data: { code: $("#discount_code").val(), country_id: $("#country").val() },
-            dataType: 'json',
-            success: function (response) {
-                console.log("AJAX success", response);
-                if (response.status) {
-                    $('#shippingAmount').html('Rs: ' + response.shippingCharge);
-                    $('#grandTotal').html('Rs: ' + response.grandtotal);
-                    $('#discount_value').html('Rs: ' + response.discount);
-                } else {
-                    // Handle the case where status is false
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error("AJAX error", status, error);
-                // Handle error response here
+  // Apply Discount Click Event
+$("#apply-discount").click(function () {
+    $.ajax({
+        url: '{{ route('front.applyDiscount') }}',
+        type: 'post',
+        data: { code: $("#discount_code").val(), country_id: $("#country").val() },
+        dataType: 'json',
+        success: function (response) {
+            console.log("AJAX success", response);
+            if (response.status) {
+                $('#shippingAmount').html('Rs: ' + response.shippingCharge);
+                $('#grandTotal').html('Rs: ' + response.grandtotal);
+                $('#discount_value').html('Rs: ' + response.discount);
+                // Update the discount variable here
+                discount = response.discount; // Add this line
+            } else {
+                // Handle the case where status is false
             }
+        },
+        error: function (xhr, status, error) {
+            console.error("AJAX error", status, error);
+            // Handle error response here
+        }
+    });
+});
 
-        });
     });
 
-});
 
 
 </script>

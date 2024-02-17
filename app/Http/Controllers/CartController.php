@@ -135,36 +135,36 @@ class CartController extends Controller
         $subTotal = Cart::subtotal(2, '.', '');
         //APPLY DISCOUNT HERE
 
-            //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
-            if ($customerAddress != '') {
-                $userCountry = $customerAddress->country_id;
-                $shippingInfo = Shipping::where('country_id', $userCountry)->first();
-                $totalQty = 0;
-                $totalShippingCharge = 0;
-                $grandtotal = 0;
-                foreach (Cart::content() as $item) {
-                    $totalQty += $item->qty;
-                }
-                $totalShippingCharge = $totalQty * $shippingInfo->amount;
-                $grandtotal = ($subTotal - $discount) + $totalShippingCharge;
-            } else {
-                $grandtotal = $subTotal;
-                $totalShippingCharge = 0;
+        //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
+        if ($customerAddress != '') {
+            $userCountry = $customerAddress->country_id;
+            $shippingInfo = Shipping::where('country_id', $userCountry)->first();
+            $totalQty = 0;
+            $totalShippingCharge = 0;
+            $grandtotal = 0;
+            foreach (Cart::content() as $item) {
+                $totalQty += $item->qty;
             }
-
-            return view(
-                'front.checkout',
-                [
-                    'countries' => $countries,
-                    'customerAddress' => $customerAddress,
-                    'totalShippingCharge' => $totalShippingCharge,
-                    'grandtotal' => $grandtotal,
-                    'discount' => $discount
-                ]
-            );
-
+            $totalShippingCharge = $totalQty * $shippingInfo->amount;
+            $grandtotal = ($subTotal - $discount) + $totalShippingCharge;
+        } else {
+            $grandtotal = $subTotal;
+            $totalShippingCharge = 0;
         }
-    
+
+        return view(
+            'front.checkout',
+            [
+                'countries' => $countries,
+                'customerAddress' => $customerAddress,
+                'totalShippingCharge' => $totalShippingCharge,
+                'grandtotal' => $grandtotal,
+                'discount' => $discount
+            ]
+        );
+
+    }
+
     public function processCheckout(Request $request)
     {
         // STEP-1 apply validation
@@ -280,47 +280,44 @@ class CartController extends Controller
     public function getOrderSummary(Request $request)
     {
         $subtotal = Cart::subtotal(2, '.', '');
-        //APPLY DISCOUNT HERE
+        $discount = 0;
+
+        // Apply discount if available
         if (session()->has('code')) {
             $code = session()->get('code');
             if ($code->type == 'percent') {
                 $discount = ($code->discount_amount / 100) * $subtotal;
             } else {
                 $discount = $code->discount_amount;
-
             }
-
         }
+
+        // Calculate shipping charge
         $shippingCharge = 0;
-        $grandtotal = 0;
 
         if ($request->has('country_id') && $request->country_id > 0) {
             $shippingInfo = Shipping::where('country_id', $request->country_id)->first();
-            $totalQty = 0;
-            foreach (Cart::content() as $item) {
-                $totalQty += $item->qty;
-            }
-
             if ($shippingInfo != null) {
                 $shippingCharge = $shippingInfo->amount;
-                $grandtotal = ($subtotal - $discount) + $shippingCharge;
             }
         } else {
             $shippingInfo = Shipping::where('country_id', 'restofworld')->first();
-
             if ($shippingInfo != null) {
                 $shippingCharge = $shippingInfo->amount;
-                $grandtotal = ($subtotal - $discount) + $shippingCharge;
             }
         }
+
+        // Calculate grand total after discount and shipping charge
+        $grandtotal = $subtotal + $shippingCharge - $discount;
 
         return response()->json([
             'status' => true,
             'grandtotal' => number_format($grandtotal, 2),
-            'discount' => $discount,
+            'discount' => number_format($discount, 2),
             'shippingCharge' => number_format($shippingCharge, 2),
         ]);
     }
+
     public function applyDiscount(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -365,21 +362,19 @@ class CartController extends Controller
             }
         }
 
-        // Apply discount to the subtotal
+        // Get the current cart subtotal
         $subtotal = Cart::subtotal(2, '.', '');
-        $discount = 0;
 
+        // Apply discount to the subtotal
+        $discount = 0;
         if ($code->type == 'percent') {
             $discount = ($code->discount_amount / 100) * $subtotal;
         } else {
             $discount = $code->discount_amount;
         }
 
-        $subtotalAfterDiscount = $subtotal - $discount;
-
         // Calculate shipping and grandtotal
         $shippingCharge = 0;
-
         if ($request->has('country_id') && $request->country_id > 0) {
             $shippingInfo = Shipping::where('country_id', $request->country_id)->first();
             if ($shippingInfo != null) {
@@ -392,7 +387,8 @@ class CartController extends Controller
             }
         }
 
-        $grandtotal = $subtotalAfterDiscount + $shippingCharge;
+        // Calculate grandtotal
+        $grandtotal = $subtotal + $shippingCharge - $discount;
 
         // Store the discount coupon in the session
         session()->put('code', $code);
@@ -401,9 +397,10 @@ class CartController extends Controller
             'status' => true,
             'message' => 'Discount coupon applied successfully',
             'grandtotal' => number_format($grandtotal, 2),
-            'discount' => $discount,
+            'discount' => number_format($discount, 2),
             'shippingCharge' => number_format($shippingCharge, 2),
         ]);
     }
+
 
 }

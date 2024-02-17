@@ -1,0 +1,51 @@
+user authentication
+
+create profile and in account create common folder in common folder create sidebar blade files
+then create auth controller in auth controller user controls will define then
+in web create middleware auth and guest 
+then go to middleware folder in middleware folder REDIRECT IF AUTHENTICATE 
+   return redirect()->route('account.profile');
+                //   return redirect(RouteServiceProvider::HOME);
+THEN AUTHENTICAATE 
+   return route('account.login');
+
+THEN CART CHECKOUT PAGE
+
+in cart controller
+create checkout function and in checkout set url.intended then go to AuthController
+and in authenticate function 
+
+            if(session()->has('url.intended')){
+                return redirect(session()->get('url.intended'));
+    }
+
+then checkout.blade.php show content
+
+CREATE COUNTRIES TABLE
+then in cart countroller define them go to checkout blade file and define countries select option then go to payment div and add 2 radios COD AND Stripe and in card body set d-none then in input of cod input type checked
+
+<script>
+    $(document).ready(function() {
+        $("#payment_method_one").click(function() {
+            if ($(this).is(":checked")) {
+                $("#card-payment-form").addClass('d-none');
+            }
+        });
+
+        $("#payment_method_two").click(function() {
+            if ($(this).is(":checked")) {
+                $("#card-payment-form").removeClass('d-none');
+            }
+        });
+    });
+</script>
+then create orders table 
+order_items
+create_customer_addresses
+then put shipping information into customer addresses table 
+SHIPPING 
+create shipping charges table then create controller of admin\shippingcontroller
+crreate crud
+then applying in checkout page	
+then adding shipping amount in checkout page then create get-summary function in cart controller
+	

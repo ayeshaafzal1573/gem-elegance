@@ -44,12 +44,8 @@ class AuthController extends Controller
             $user->password = bcrypt($request->password);
             $user->save();
 
-            return response()->json([
-                'status' => true,
-                'message' => 'Registration successful',
-
-            ]);
-            return view('front.account.login');
+            // Redirect to the login page after successful registration
+            return redirect()->route('login')->with('success', 'Registration successful. You can now log in.');
         } else {
             return response()->json([
                 'status' => false,

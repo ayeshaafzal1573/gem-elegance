@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2024 at 12:14 AM
+-- Generation Time: Feb 17, 2024 at 12:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -49,7 +49,7 @@ INSERT INTO `category` (`id`, `name`, `slug`, `image`, `gender`, `show`, `status
 (3, 'Men Rings', 'men-rings', 'public/uploads/category/3.png', 'Male', 'Yes', 1, '2023-11-26 06:49:17', '2023-11-26 06:49:17'),
 (4, 'Women Rings', 'women-rings', 'public/uploads/category/4.png', 'Female', 'Yes', 1, '2023-11-26 06:50:05', '2023-11-26 06:50:37'),
 (5, 'Women Earrings', 'women-earrings', 'public/uploads/category/5.png', 'Female', 'Yes', 1, '2023-11-26 06:51:30', '2023-11-26 06:51:51'),
-(6, 'Women Necklace', 'women-necklace', 'public/uploads/category/6.png', 'Female', 'Yes', 1, '2023-11-26 06:54:23', '2023-11-27 01:33:33');
+(6, 'Women Necklace', 'women-necklace', 'public/uploads/category/6.png', 'Female', 'Yes', 1, '2023-11-26 06:54:23', '2024-01-30 06:52:57');
 
 -- --------------------------------------------------------
 
@@ -581,7 +581,32 @@ INSERT INTO `products` (`id`, `name`, `slug`, `price`, `compare_price`, `style`,
 (28, 'Chic Circle', 'chic-circle', 700.00, 800.00, 'Antique', 'Minimalist', 'Chic Circle rings embody modern elegance with their sleek and minimalist design. Crafted to perfection, these rings feature a captivating circular motif, adding a touch of contemporary charm to your fingers. Elevate your style with the understated beauty ', 5, 4, 1, '2023-12-12 13:18:58', '2023-12-12 13:18:58'),
 (29, 'Classic Crown', 'classic-crown', 1350.00, 1450.00, 'Halo', 'Gold', 'Classic Crown rings exude regal elegance with their timeless design. Crafted with meticulous attention, these rings feature a majestic crown motif, adding a touch of royalty to your fingers. Elevate your style with the enduring beauty and refined allure o', 6, 4, 1, '2023-12-12 13:20:03', '2023-12-12 13:20:03'),
 (30, 'Starry Night', 'starry-night', 650.00, 799.00, 'Elegant', 'Silver', 'Starry Night rings capture the magic of the cosmos with their celestial-inspired design. Featuring delicate stars set against a backdrop of polished metal, these rings add a touch of enchantment to your fingers. Elevate your style with the celestial charm', 6, 4, 1, '2023-12-12 13:21:05', '2023-12-12 13:21:05'),
-(31, 'Chronic Classic', 'chronic-classic', 3500.00, 3900.00, 'Chronophic', 'Leather', 'A sleek and versatile timepiece for the modern man. Precision meets style with its sophisticated chronograph design, showcasing a stainless steel case and a timeless blend of functionality and elegance.', 11, 1, 1, '2024-01-27 14:10:18', '2024-01-27 14:11:36');
+(31, 'Chronic Classic', 'chronic-classic', 3500.00, 3900.00, 'Chronophic', 'Leather', 'A sleek and versatile timepiece for the modern man. Precision meets style with its sophisticated chronograph design, showcasing a stainless steel case and a timeless blend of functionality and elegance.', 11, 1, 1, '2024-01-27 14:10:18', '2024-01-27 14:11:36'),
+(32, 'Precision Pro', 'precision-pro', 10000.00, 11000.00, 'Classic', 'Leather', 'Define your style with this sleek men\'s watch. Meticulously crafted with premium materials, it exudes sophistication and durability. Elevate your look with its timeless design and impeccable precision.', 20, 1, 1, '2024-02-13 05:02:02', '2024-02-13 05:02:02'),
+(33, 'Navigator\'s Watch', 'navigators-watch', 8999.00, 9999.00, 'Ceramic', 'Elegane', 'Navigate life\'s adventures with confidence wearing this rugged yet stylish timepiece. Crafted for explorers, it combines durability with functionality, ensuring reliability wherever your journey takes you.', 30, 1, 1, '2024-02-13 05:05:10', '2024-02-13 05:05:10'),
+(34, 'Urban Explorer', 'urban-explorer', 11000.00, 12000.00, 'Gold', 'Alloys', 'Embrace city life with this versatile watch. Designed for the modern adventurer, its sleek style meets durability. Navigate urban landscapes in style and confidence with this essential accessory.', 5, 1, 1, '2024-02-13 05:07:08', '2024-02-13 05:07:08'),
+(35, 'Retro Revival', 'retro-revival', 20000.00, 21000.00, 'Tachymeter', 'Stainless Steel', 'Embrace nostalgia with this vintage-inspired watch. Its timeless design pays homage to classic styles while offering modern functionality. Elevate your look with a touch of retro charm and contemporary flair.', 20, 1, 1, '2024-02-13 05:09:35', '2024-02-13 05:09:35'),
+(36, 'Gentleman\'s Gear', 'gentlemans-gear', 22000.00, 2250.00, 'Submariner', 'Titanium', 'Elevate your sophistication with this refined timepiece. Crafted for the modern gentleman, its classic design exudes timeless elegance. Embrace luxury and style with this essential accessory for every occasion.', 5, 1, 1, '2024-02-13 05:11:42', '2024-02-13 05:11:42'),
+(37, 'Diver\'s Delight', 'divers-delight', 24000.00, 2490.00, 'Elegant', 'Silver', 'Dive into adventure with confidence wearing this robust timepiece. Designed for underwater exploration, its durable build and water resistance ensure reliability. Make a splash with style and functionality.', 12, 1, 1, '2024-02-13 05:13:47', '2024-02-13 05:13:47'),
+(38, 'Bold Expedition', 'bold-expedition', 9999.00, 10000.00, 'Mechanical', 'Steel', 'Embark on daring journeys with this rugged timepiece. Built for adventure, its bold design and durability withstand the toughest conditions. Forge your path with confidence and style on every expedition.', 20, 1, 1, '2024-02-13 05:15:04', '2024-02-13 05:15:04'),
+(39, 'Gem Cascade', 'gem-cascade', 2300.00, 2500.00, 'Craftsmanship', 'Gold', 'Enhance your ensemble with this captivating men\'s necklace. Adorned with a cascade of exquisite gemstones, it exudes elegance and charm. Elevate your look with this luxurious accessory.', 20, 2, 1, '2024-02-13 05:18:00', '2024-02-13 05:18:00'),
+(40, 'Steel Band', 'steel-band', 30000.00, 32000.00, 'Special', 'Gold', 'Make a statement with this sleek men\'s ring. Crafted from durable stainless steel, its minimalist design exudes modern sophistication. Elevate your style with this versatile accessory that adds a touch of elegance to any look.', 15, 3, 1, '2024-02-13 05:20:27', '2024-02-13 05:20:27'),
+(41, 'Gold Signet', 'gold-signet', 3000.00, 3500.00, 'Classic', 'Gold', 'Gold Signet men\'s ring exudes sophistication. Meticulously designed in 18K gold, its classic style embodies refinement and distinction, a must-have for every gentleman\'s collection. Shop now at Gem Elegance', 20, 3, 1, '2024-02-17 05:33:51', '2024-02-17 05:33:51'),
+(42, 'Silver Halo', 'silver-halo', 4500.00, 4999.00, 'Elegance', 'Diamond', 'Elevate your style with our Silver Halo ring, a symbol of grace and sophistication. Expertly crafted in sterling silver, its halo design exudes timeless elegance, perfect for any occasion. Shop now at Gem Elegance', 2, 3, 1, '2024-02-17 05:35:18', '2024-02-17 05:35:18'),
+(43, 'Brushed Silver', 'brushed-silver', 5000.00, 5400.00, 'Classic', 'Silver', '\"Introducing our Brushed Silver ring, a masterpiece of modern sophistication. Crafted with meticulous detail, its brushed finish exudes contemporary elegance, making it a timeless addition to any collection. Elevate your style with understated luxury. Sho', 20, 3, 1, '2024-02-17 05:38:27', '2024-02-17 05:38:27'),
+(44, 'Urban Signet', 'urban-signet', 3000.00, 3200.00, 'Modern', 'Gold', 'Embrace urban sophistication with our Urban Signet ring. Bold yet refined, this statement piece features sleek lines and modern design, crafted for the contemporary gentleman\'s style. Elevate your look with confidence. Shop now !', 2, 3, 1, '2024-02-17 05:39:42', '2024-02-17 05:39:42'),
+(45, 'Sleek Slate', 'sleek-slate', 4500.00, 4599.00, 'Modern', 'Diamond', 'Introducing Sleek Slate – a fusion of modernity and elegance. Crafted with precision, its slate-inspired design exudes sophistication, making it a versatile addition to any wardrobe. Elevate your style with confidence. Shop now', 15, 3, 1, '2024-02-17 05:41:14', '2024-02-17 05:41:14'),
+(46, 'Tungsten Twist', 'tungsten-twist', 5000.00, 5200.00, 'Sophisticated', 'Gold', 'Experience the Tungsten Twist - a blend of strength and style. Crafted with durable tungsten, its unique twist design adds a touch of sophistication to any look. Elevate your ensemble with lasting elegance. Shop now !', 8, 3, 1, '2024-02-17 05:42:45', '2024-02-17 05:42:45'),
+(47, 'Diamond Duo', 'diamond-duo', 7500.00, 7800.00, 'Classic', 'Diamond', 'Discover the brilliance of our Diamond Duo ring, where elegance meets extravagance. Crafted with exquisite diamonds set in a duo formation, this piece epitomizes luxury and sophistication. Elevate your style with unmatched radiance. Shop now', 12, 3, 1, '2024-02-17 05:43:49', '2024-02-17 05:43:49'),
+(48, 'Bold Bezel', 'bold-bezel', 10000.00, 11999.00, 'Ceramic', 'Graphic', 'Make a statement with our Bold Bezel ring, a symbol of confidence and style. Crafted with precision, its prominent bezel design exudes strength and sophistication, perfect for the modern gentleman. Elevate your look with bold elegance. Shop now', 22, 3, 1, '2024-02-17 05:45:41', '2024-02-17 05:45:41'),
+(49, 'Pearl Elegance', 'pearl-elegance', 2000.00, 2300.00, 'Classic', 'Pearl', 'Pearl Elegance isn\'t just for women. Our men\'s necklace redefines sophistication. Crafted with timeless pearls and masculine design, it exudes refined masculinity. Elevate your style at Gem Elegance', 20, 2, 1, '2024-02-17 05:49:46', '2024-02-17 05:49:46'),
+(50, 'Crystal Charm', 'crystal-charm', 10000.00, 12000.00, 'Elegant', 'Gold', '\"Introducing Crystal Charm, a men\'s necklace that embodies elegance and charm. Crafted with precision and adorned with crystals, it adds a touch of sophistication to any ensemble. Elevate your style with Gem Elegance', 20, 2, 1, '2024-02-17 05:55:36', '2024-02-17 05:55:36'),
+(51, 'Gold Lariat', 'gold-lariat', 3000.00, 3299.00, 'Classic', 'Gold', 'Indulge in luxury with our Gold Lariat men\'s necklace. Crafted with exquisite detail and featuring a lariat design, it epitomizes sophistication and timeless style. Elevate your look with elegance. Shop now at Gem Elegance', 2, 2, 1, '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
+(52, 'Silver Moon', 'silver-moon', 4500.00, 4900.00, 'Ceramic', 'Silver', 'Radiate celestial elegance with our Silver Moon men\'s necklace. Crafted with sterling silver, its moon-inspired design evokes mystery and sophistication. Elevate your style with lunar allure. Discover it at Gem Elegance', 29, 2, 1, '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
+(53, 'Boho Bead', 'boho-bead', 5200.00, 5400.00, 'Craftsmanship', 'Diamond', 'Embrace the free spirit with our Boho Bead men\'s necklace. Crafted with vibrant beads and eclectic charm, it exudes bohemian style and individuality. Elevate your look with a touch of wanderlust. Find it at Gem Elegance', 30, 2, 1, '2024-02-17 06:07:28', '2024-02-17 06:07:28'),
+(54, 'Retro Link', 'retro-link', 2300.00, 2400.00, 'Classic', 'Ceramic', '\"Step into the past with our Retro Link men\'s necklace. Crafted with vintage-inspired links, it exudes old-school charm and timeless style. Elevate your look with a nostalgic touch. Discover it at Gem Elegance', 8, 2, 1, '2024-02-17 06:09:13', '2024-02-17 06:09:13'),
+(55, 'Bold Choker', 'bold-choker', 6000.00, 6500.00, 'Elegant', 'Silver Gold', 'Make a statement with our Bold Choker men\'s necklace. Crafted to stand out, its striking design exudes confidence and style. Elevate your look with bold sophistication. Find it exclusively at Gem Elegance', 23, 2, 1, '2024-02-17 06:10:48', '2024-02-17 06:10:48'),
+(56, 'Gemstone Loop', 'gemstone-loop', 6200.00, 6500.00, 'Unique', 'Diamond', '\"Introducing the Gemstone Loop men\'s necklace, a fusion of elegance and masculinity. Crafted with striking gemstones intricately looped, it exudes sophistication and individuality. Elevate your style with Gem Elegance', 15, 2, 1, '2024-02-17 06:12:09', '2024-02-17 06:12:09');
 
 -- --------------------------------------------------------
 
@@ -717,7 +742,107 @@ INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `created_at`, `u
 (162, 31, 'uploads/EARINGS 1.JPEG', '2024-01-27 14:11:36', '2024-01-27 14:11:36'),
 (163, 31, 'uploads/EARINGS 2.JPG', '2024-01-27 14:11:36', '2024-01-27 14:11:36'),
 (164, 31, 'uploads/EARINGS 3.JPG', '2024-01-27 14:11:36', '2024-01-27 14:11:36'),
-(165, 31, 'uploads/EARINGS 4.JPEG', '2024-01-27 14:11:36', '2024-01-27 14:11:36');
+(165, 31, 'uploads/EARINGS 4.JPEG', '2024-01-27 14:11:36', '2024-01-27 14:11:36'),
+(166, 32, 'uploads/3-0.JPG', '2024-02-13 05:02:03', '2024-02-13 05:02:03'),
+(167, 32, 'uploads/3-1.JPEG', '2024-02-13 05:02:03', '2024-02-13 05:02:03'),
+(168, 32, 'uploads/3-2.JPG', '2024-02-13 05:02:03', '2024-02-13 05:02:03'),
+(169, 32, 'uploads/3-4.JPG', '2024-02-13 05:02:03', '2024-02-13 05:02:03'),
+(202, 35, 'uploads/1-1.JPEG', '2024-02-13 05:22:17', '2024-02-13 05:22:17'),
+(203, 35, 'uploads/1-2.JPG', '2024-02-13 05:22:17', '2024-02-13 05:22:17'),
+(204, 35, 'uploads/1-3.JPG', '2024-02-13 05:22:17', '2024-02-13 05:22:17'),
+(205, 35, 'uploads/1-4.JPEG', '2024-02-13 05:22:17', '2024-02-13 05:22:17'),
+(206, 36, 'uploads/g-1.JPEG', '2024-02-13 05:25:49', '2024-02-13 05:25:49'),
+(207, 36, 'uploads/g2-.JPG', '2024-02-13 05:25:49', '2024-02-13 05:25:49'),
+(208, 36, 'uploads/g3.JPG', '2024-02-13 05:25:49', '2024-02-13 05:25:49'),
+(209, 36, 'uploads/g4.JPEG', '2024-02-13 05:25:49', '2024-02-13 05:25:49'),
+(210, 33, 'uploads/h1.JPG', '2024-02-13 05:28:11', '2024-02-13 05:28:11'),
+(211, 33, 'uploads/h2.JPEG', '2024-02-13 05:28:11', '2024-02-13 05:28:11'),
+(212, 33, 'uploads/h3.JPG', '2024-02-13 05:28:11', '2024-02-13 05:28:11'),
+(213, 33, 'uploads/h4.JPG', '2024-02-13 05:28:11', '2024-02-13 05:28:11'),
+(214, 34, 'uploads/f1.JPEG', '2024-02-13 05:30:44', '2024-02-13 05:30:44'),
+(215, 34, 'uploads/f2.JPG', '2024-02-13 05:30:44', '2024-02-13 05:30:44'),
+(216, 34, 'uploads/f3.JPG', '2024-02-13 05:30:44', '2024-02-13 05:30:44'),
+(217, 34, 'uploads/f4.JPEG', '2024-02-13 05:30:44', '2024-02-13 05:30:44'),
+(222, 38, 'uploads/b1.JPEG', '2024-02-13 05:33:37', '2024-02-13 05:33:37'),
+(223, 38, 'uploads/b2.JPG', '2024-02-13 05:33:37', '2024-02-13 05:33:37'),
+(224, 38, 'uploads/b3.JPG', '2024-02-13 05:33:37', '2024-02-13 05:33:37'),
+(225, 38, 'uploads/b4.JPEG', '2024-02-13 05:33:37', '2024-02-13 05:33:37'),
+(226, 39, 'uploads/n3.JPG', '2024-02-13 05:36:55', '2024-02-13 05:36:55'),
+(227, 39, 'uploads/a1.JPEG', '2024-02-13 05:36:55', '2024-02-13 05:36:55'),
+(228, 39, 'uploads/n2.JPG', '2024-02-13 05:36:55', '2024-02-13 05:36:55'),
+(229, 39, 'uploads/n4.JPEG', '2024-02-13 05:36:55', '2024-02-13 05:36:55'),
+(230, 40, 'uploads/r1.JPEG', '2024-02-13 05:38:05', '2024-02-13 05:38:05'),
+(231, 40, 'uploads/r2.JPG', '2024-02-13 05:38:05', '2024-02-13 05:38:05'),
+(232, 40, 'uploads/r3.JPG', '2024-02-13 05:38:05', '2024-02-13 05:38:05'),
+(233, 40, 'uploads/r4.JPEG', '2024-02-13 05:38:05', '2024-02-13 05:38:05'),
+(234, 37, 'uploads/a2.jfif', '2024-02-13 09:46:09', '2024-02-13 09:46:09'),
+(235, 37, 'uploads/a3.jfif', '2024-02-13 09:46:09', '2024-02-13 09:46:09'),
+(236, 37, 'uploads/a1.jfif', '2024-02-13 09:46:09', '2024-02-13 09:46:09'),
+(237, 37, 'uploads/01.jfif', '2024-02-13 09:46:09', '2024-02-13 09:46:09'),
+(238, 41, 'uploads/c1.JPEG', '2024-02-17 05:33:52', '2024-02-17 05:33:52'),
+(239, 41, 'uploads/c2.JPG', '2024-02-17 05:33:52', '2024-02-17 05:33:52'),
+(240, 41, 'uploads/c3.JPG', '2024-02-17 05:33:52', '2024-02-17 05:33:52'),
+(241, 41, 'uploads/c4.JPEG', '2024-02-17 05:33:52', '2024-02-17 05:33:52'),
+(242, 42, 'uploads/d1.JPEG', '2024-02-17 05:35:18', '2024-02-17 05:35:18'),
+(243, 42, 'uploads/d2.JPG', '2024-02-17 05:35:18', '2024-02-17 05:35:18'),
+(244, 42, 'uploads/d3.JPG', '2024-02-17 05:35:18', '2024-02-17 05:35:18'),
+(245, 42, 'uploads/d4.JPEG', '2024-02-17 05:35:18', '2024-02-17 05:35:18'),
+(246, 43, 'uploads/z-1.JPEG', '2024-02-17 05:38:28', '2024-02-17 05:38:28'),
+(247, 43, 'uploads/z-3.JPG', '2024-02-17 05:38:28', '2024-02-17 05:38:28'),
+(248, 43, 'uploads/z-4.JPEG', '2024-02-17 05:38:28', '2024-02-17 05:38:28'),
+(249, 43, 'uploads/z-2.JPG', '2024-02-17 05:38:28', '2024-02-17 05:38:28'),
+(250, 44, 'uploads/e1.JPG', '2024-02-17 05:39:43', '2024-02-17 05:39:43'),
+(251, 44, 'uploads/e2.JPG', '2024-02-17 05:39:43', '2024-02-17 05:39:43'),
+(252, 44, 'uploads/e3.JPG', '2024-02-17 05:39:43', '2024-02-17 05:39:43'),
+(253, 44, 'uploads/e4.JPG', '2024-02-17 05:39:43', '2024-02-17 05:39:43'),
+(254, 45, 'uploads/f1.JPEG', '2024-02-17 05:41:14', '2024-02-17 05:41:14'),
+(255, 45, 'uploads/f2.JPG', '2024-02-17 05:41:14', '2024-02-17 05:41:14'),
+(256, 45, 'uploads/f3.JPG', '2024-02-17 05:41:14', '2024-02-17 05:41:14'),
+(257, 45, 'uploads/f4.JPEG', '2024-02-17 05:41:14', '2024-02-17 05:41:14'),
+(258, 46, 'uploads/g1.JPEG', '2024-02-17 05:42:45', '2024-02-17 05:42:45'),
+(259, 46, 'uploads/g2.JPG', '2024-02-17 05:42:45', '2024-02-17 05:42:45'),
+(260, 46, 'uploads/g3.JPG', '2024-02-17 05:42:45', '2024-02-17 05:42:45'),
+(261, 46, 'uploads/g4.JPEG', '2024-02-17 05:42:45', '2024-02-17 05:42:45'),
+(262, 47, 'uploads/i1.JPEG', '2024-02-17 05:43:49', '2024-02-17 05:43:49'),
+(263, 47, 'uploads/i2.JPG', '2024-02-17 05:43:49', '2024-02-17 05:43:49'),
+(264, 47, 'uploads/i3.JPG', '2024-02-17 05:43:49', '2024-02-17 05:43:49'),
+(265, 47, 'uploads/i4.JPEG', '2024-02-17 05:43:49', '2024-02-17 05:43:49'),
+(266, 48, 'uploads/i5.JPEG', '2024-02-17 05:45:41', '2024-02-17 05:45:41'),
+(267, 48, 'uploads/i6.JPG', '2024-02-17 05:45:41', '2024-02-17 05:45:41'),
+(268, 48, 'uploads/i7.JPG', '2024-02-17 05:45:41', '2024-02-17 05:45:41'),
+(269, 48, 'uploads/i8.JPG', '2024-02-17 05:45:41', '2024-02-17 05:45:41'),
+(270, 49, 'uploads/j1.JPEG', '2024-02-17 05:49:46', '2024-02-17 05:49:46'),
+(271, 49, 'uploads/j2.JPG', '2024-02-17 05:49:46', '2024-02-17 05:49:46'),
+(272, 49, 'uploads/j3.JPG', '2024-02-17 05:49:46', '2024-02-17 05:49:46'),
+(273, 49, 'uploads/j4.JPG', '2024-02-17 05:49:46', '2024-02-17 05:49:46'),
+(278, 50, 'uploads/four.jpg', '2024-02-17 06:00:26', '2024-02-17 06:00:26'),
+(279, 50, 'uploads/three.jpg', '2024-02-17 06:00:26', '2024-02-17 06:00:26'),
+(280, 50, 'uploads/two.jpg', '2024-02-17 06:00:26', '2024-02-17 06:00:26'),
+(281, 50, 'uploads/1.jpg', '2024-02-17 06:00:26', '2024-02-17 06:00:26'),
+(282, 51, 'uploads/EARINGS (30) -2.JPEG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
+(283, 51, 'uploads/EARINGS (30).JPEG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
+(284, 51, 'uploads/EARINGS (30).JPG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
+(285, 51, 'uploads/EARINGS (30)-1.JPG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
+(286, 52, 'uploads/EARINGS (31).JPEG', '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
+(287, 52, 'uploads/EARINGS (31).JPG', '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
+(288, 52, 'uploads/EARINGS (31)-0.JPG', '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
+(289, 52, 'uploads/EARINGS (31)-1 -2.JPG', '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
+(290, 53, 'uploads/EARINGS (32) - 4.JPEG', '2024-02-17 06:07:28', '2024-02-17 06:07:28'),
+(291, 53, 'uploads/EARINGS (32).JPEG', '2024-02-17 06:07:28', '2024-02-17 06:07:28'),
+(292, 53, 'uploads/EARINGS (32).JPG', '2024-02-17 06:07:28', '2024-02-17 06:07:28'),
+(293, 53, 'uploads/EARINGS (32)-1.JPG', '2024-02-17 06:07:28', '2024-02-17 06:07:28'),
+(294, 54, 'uploads/Rectangle 24 (7).JPEG', '2024-02-17 06:09:13', '2024-02-17 06:09:13'),
+(295, 54, 'uploads/Rectangle 24 (7).JPG', '2024-02-17 06:09:13', '2024-02-17 06:09:13'),
+(296, 54, 'uploads/Rectangle 24 (7)-1.JPG', '2024-02-17 06:09:13', '2024-02-17 06:09:13'),
+(297, 54, 'uploads/Rectangle 24 (7)-2.JPG', '2024-02-17 06:09:13', '2024-02-17 06:09:13'),
+(298, 55, 'uploads/EARINGS (33).JPEG', '2024-02-17 06:10:48', '2024-02-17 06:10:48'),
+(299, 55, 'uploads/EARINGS (33).JPG', '2024-02-17 06:10:48', '2024-02-17 06:10:48'),
+(300, 55, 'uploads/EARINGS (33)-1 - 2.JPG', '2024-02-17 06:10:48', '2024-02-17 06:10:48'),
+(301, 55, 'uploads/EARINGS (33)-1.JPG', '2024-02-17 06:10:48', '2024-02-17 06:10:48'),
+(302, 56, 'uploads/Rectangle 24 (8) - Copy.JPEG', '2024-02-17 06:12:09', '2024-02-17 06:12:09'),
+(303, 56, 'uploads/Rectangle 24 (8).JPEG', '2024-02-17 06:12:09', '2024-02-17 06:12:09'),
+(304, 56, 'uploads/Rectangle 24 (8).JPG', '2024-02-17 06:12:09', '2024-02-17 06:12:09'),
+(305, 56, 'uploads/Rectangle 24 (8)-1.JPG', '2024-02-17 06:12:09', '2024-02-17 06:12:09');
 
 -- --------------------------------------------------------
 
@@ -738,7 +863,7 @@ CREATE TABLE `shipping_charges` (
 --
 
 INSERT INTO `shipping_charges` (`id`, `country_id`, `amount`, `created_at`, `updated_at`) VALUES
-(1, '2', 1200.00, '2023-12-10 05:06:46', '2023-12-10 05:06:46'),
+(1, '2', 1100.00, '2023-12-10 05:06:46', '2024-01-30 07:28:13'),
 (2, 'rest_of_world', 0.00, '2023-12-10 05:22:55', '2023-12-10 05:22:55'),
 (3, '3', 1200.00, '2023-12-10 05:47:28', '2023-12-10 05:47:28'),
 (8, '164', 100.00, '2023-12-10 06:40:24', '2023-12-10 06:40:24'),
@@ -768,7 +893,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, 2, NULL, '$2y$10$WjCryO4oHrh/vzTsozxLB.ypqFgKvUx3tobS9CZm67rIow6Hjk4e6', NULL, '2023-11-26 06:33:14', '2023-11-26 06:33:14'),
+(1, 'Admin', 'admin@gmail.com', NULL, 2, NULL, '$2y$10$JLF1I532CD5PrCyJZeg1zec3bLzfZ9fR3cLO3MNzPlFfuwooTK10a', NULL, '2023-11-26 06:33:14', '2024-01-30 05:41:32'),
 (5, 'Sunaina', 'sunaina@gmail.com', '0391-9290123', 1, NULL, '$2y$10$pfy9QEN64gsKfjh7Te6M3Oql9YfHsCdEs3tO6J97FkraB4T5HGX3O', NULL, '2023-12-10 09:59:46', '2024-01-29 13:49:25');
 
 --
@@ -934,13 +1059,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
 
 --
 -- AUTO_INCREMENT for table `shipping_charges`

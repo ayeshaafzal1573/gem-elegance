@@ -39,7 +39,7 @@
     <div style="position: relative;">
         <img src="{{asset('front-assets/images/Rectangle 21.png')}}" alt="">
         <button class="newestbutton1">
-            <a href="{{route('front.women-necklace')}}">VIEW MORE</a>
+            <a href="{{route('front.products')}}">VIEW MORE</a>
         </button>
     </div>
     <p class="newesttext">Gold Plated Necklace</p>

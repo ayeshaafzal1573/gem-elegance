@@ -134,15 +134,8 @@ class CartController extends Controller
         $countries = Country::orderBy('name', 'ASC')->get();
         $subTotal = Cart::subtotal(2, '.', '');
         //APPLY DISCOUNT HERE
-        if (session()->has('code')) {
-            $code = session()->get('code');
-            if ($code->type == 'percent') {
-                $discount = ($code->discount_amount / 100) * $subTotal;
-            } else {
-                $discount = $code->discount_amount;
 
-            }
-                    //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
+            //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
             if ($customerAddress != '') {
                 $userCountry = $customerAddress->country_id;
                 $shippingInfo = Shipping::where('country_id', $userCountry)->first();
@@ -171,7 +164,7 @@ class CartController extends Controller
             );
 
         }
-    }
+    
     public function processCheckout(Request $request)
     {
         // STEP-1 apply validation
@@ -414,4 +407,3 @@ class CartController extends Controller
     }
 
 }
-

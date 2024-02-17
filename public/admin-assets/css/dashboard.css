@@ -20,7 +20,12 @@
   --filter-reset: #D9D9D9;
   --filter-shadow: #c5b18e 0px 6px 12px -2px, #c5b18e 0px 3px 7px -3px;
 }
-
+.order-input{
+background-color: var(--table-border);
+border: 1px solid var(--sidebar);
+padding: 10px;
+border-radius: 10px;
+}
 .light:root {
   --app-bg: #E5DCC8;
   --sidebar:#c5b18e ;

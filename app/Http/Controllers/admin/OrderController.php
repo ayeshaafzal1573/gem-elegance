@@ -28,7 +28,7 @@ class OrderController extends Controller
     {
         $order = Order::select('orders.*', 'countries.name as countryName')->where('orders.id', $orderId)->leftJoin('countries', 'countries.id', 'orders.country_id')->first();
         $orderItems = OrderItem::where('order_id', $orderId)->get();
-        return view('admin.orders.detail', ['order' => $order,'orderItems' => $orderItems]);
+        return view('admin.orders.detail', ['order' => $order, 'orderItems' => $orderItems]);
     }
     public function changeOrderStatus(Request $request, $orderId)
     {
@@ -42,7 +42,7 @@ class OrderController extends Controller
         $order->shipped_date = $request->shipped_date;
         $order->save();
 
-        return view('admin.orders.detail', ['order' => $order,'orderItems' => $orderItems]);
+        return view('admin.orders.detail', ['order' => $order, 'orderItems' => $orderItems]);
     }
 
 }

@@ -321,23 +321,23 @@ $("#apply-discount").click(function () {
         type: 'post',
         data: { code: $("#discount_code").val(), country_id: $("#country").val() },
         dataType: 'json',
-        success: function (response) {
-            console.log("AJAX success", response);
-            if (response.status) {
-                $('#shippingAmount').html('Rs: ' + response.shippingCharge);
-                $('#grandTotal').html('Rs: ' + response.grandtotal);
-                $('#discount_code').html('Rs: ' + response.discount);
-            } else {
-                // Check if the message is 'Invalid discount coupon'
-                if (response.message === 'Invalid discount coupon') {
-                    alert('Invalid discount coupon');
+      success: function (response) {
+    console.log("AJAX success", response);
+    if (response.status) {
+        $('#shippingAmount').html('Rs: ' + response.shippingCharge);
+        $('#grandTotal').html('Rs: ' + response.grandtotal);
+        $('#discount_value').html('Rs: ' + response.discount); // Update this line
+    } else {
+        // Check if the message is 'Invalid discount coupon'
+        if (response.message === 'Invalid discount coupon') {
+            alert('Invalid discount coupon');
+        }
+    }
+},
 
-                }
-            }
-        },
         error: function (xhr, status, error) {
             console.error("AJAX error", status, error);
-            
+
         }
 
     });

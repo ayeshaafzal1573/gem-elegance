@@ -34,7 +34,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           PRODUCTS
+          OUR COLLECTION
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownWomen">
             <a class="dropdown-item" href="{{route('front.men')}}">Men</a>

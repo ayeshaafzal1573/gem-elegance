@@ -134,7 +134,10 @@ class CartController extends Controller
         $countries = Country::orderBy('name', 'ASC')->get();
         $subTotal = Cart::subtotal(2, '.', '');
         //APPLY DISCOUNT HERE
-
+        if (session()->has('code')) {
+            $discountCoupon = session()->get('code');
+            $discount = $discountCoupon->discount_amount;
+        }
         //THE STEP AFTER SHIPPING CUSTOMER CALCULATE SHIPPING
         if ($customerAddress != '') {
             $userCountry = $customerAddress->country_id;
@@ -207,28 +210,29 @@ class CartController extends Controller
             ]
         );
 
-        // Process the order
         if ($request->payment_method == 'cod') {
-            // Calculate discount
+            $shipping = 0;
             $discount = 0;
+            $subtotal = Cart::subtotal('2', '.', '');
+
+            // Check if there is a discount coupon applied
             if (session()->has('code')) {
-                $discount = session()->get('code')->discount_amount;
+                $discountCoupon = session()->get('code');
+                $discount = $discountCoupon->discount_amount;
             }
 
             // Calculate shipping charge
-            $shipping = 0;
             $shippingInfo = Shipping::where('country_id', $request->country)->first();
+            $totalQty = 0;
+            foreach (Cart::content() as $item) {
+                $totalQty += $item->qty;
+            }
             if ($shippingInfo != null) {
                 $shipping = $shippingInfo->amount;
             }
 
-            // Calculate subtotal
-            $subtotal = Cart::subtotal(2, '.', '');
+            $grandtotal = ($subtotal - $discount) + $shipping;
 
-            // Calculate grand total
-            $grandtotal = $subtotal + $shipping - $discount;
-
-            // Save order
             $order = new Order;
             $order->subtotal = $subtotal;
             $order->shipping = $shipping;
@@ -237,6 +241,8 @@ class CartController extends Controller
             $order->user_id = $user->id;
             $order->payment_status = 'Not Paid';
             $order->status = 'Pending';
+            $order->coupan_code = $discount > 0 ? $discountCoupon->code : null;
+
 
             $order->first_name = $request->first_name;
             $order->last_name = $request->last_name;
@@ -288,11 +294,7 @@ class CartController extends Controller
         // Apply discount if available
         if (session()->has('code')) {
             $code = session()->get('code');
-            if ($code->type == 'percent') {
-                $discount = ($code->discount_amount / 100) * $subtotal;
-            } else {
-                $discount = $code->discount_amount;
-            }
+            $discount = $code->discount_amount;
         }
 
         // Calculate shipping charge
@@ -368,15 +370,7 @@ class CartController extends Controller
         // Get the current cart subtotal
         $subtotal = Cart::subtotal(2, '.', '');
 
-        // Apply discount to the subtotal
-        $discount = 0;
-        if ($code->type == 'percent') {
-            $discount = ($code->discount_amount / 100) * $subtotal;
-        } else {
-            $discount = $code->discount_amount;
-        }
-
-        // Calculate shipping and grandtotal
+        // Calculate shipping charge
         $shippingCharge = 0;
         if ($request->has('country_id') && $request->country_id > 0) {
             $shippingInfo = Shipping::where('country_id', $request->country_id)->first();
@@ -389,6 +383,10 @@ class CartController extends Controller
                 $shippingCharge = $shippingInfo->amount;
             }
         }
+
+        // Apply discount to the subtotal
+        $discount = 0;
+        $discount = min($code->discount_amount, $subtotal);
 
         // Calculate grandtotal
         $grandtotal = $subtotal + $shippingCharge - $discount;
@@ -404,6 +402,5 @@ class CartController extends Controller
             'shippingCharge' => number_format($shippingCharge, 2),
         ]);
     }
-
 
 }

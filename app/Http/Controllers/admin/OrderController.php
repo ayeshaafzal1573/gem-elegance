@@ -41,8 +41,10 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->shipped_date = $request->shipped_date;
         $order->save();
-
-        return view('admin.orders.detail', ['order' => $order, 'orderItems' => $orderItems]);
+        $listPageUrl = route('orders.index');
+        // Return the order details in the JSON response
+        return response()->json(['success' => true, 'order' => $order, 'orderItems' => $orderItems, 'listPageUrl' => $listPageUrl]);
     }
+
 
 }

@@ -16,7 +16,7 @@
                         <div class="card-body pb-0">
                             <!-- Info -->
                             <div class="card card-sm">
-                                <div class="card-body bg-light mb-3">
+                                <div class="card-body mb-3">
                                     <div class="row">
                                         <div class="col-6 col-lg-3">
                                             <!-- Heading -->
@@ -67,7 +67,7 @@
                         <div class="card-footer p-3">
 
                             <!-- Heading -->
-                            <h6 class="mb-7 h5 mt-4">Order Items (3)</h6>
+                            <h6 class="mb-7 h5 mt-4">Order Items</h6>
 
                             <!-- Divider -->
                             <hr class="my-3">
@@ -79,21 +79,12 @@
 
                                 <li class="list-group-item">
                                     <div class="row align-items-center">
-                                        <div class="col-4 col-md-3 col-xl-2">
-                                          {{-- @php
-                                            $productImage= getProductImage($item->product_id);
-                                           @endphp
-                                            @if($productImage->$image_path)
-                    <img src="{{ asset('/' . $productImage->$image_path . '.png') }}" alt="product" class="img-fluid">
-                @else
-                    <p>No Image</p>
-                @endif --}}
-                                               </div>
+
                                         <div class="col">
                                             <!-- Title -->
-                                            <p class="mb-4 fs-sm fw-bold">
-                                                <a class="text-body" href="product.html">{{$item->name}} x {{$item->qty}}</a> <br>
-                                                <span class="text-muted">Rs: {{$item->total}}</span>
+                                            <p class="mb-4 fs-sm fw-bold" style="font-family: Arial, Helvetica, sans-serif;">
+                                               {{$item->name}} x {{$item->qty}} <br>
+                                                <span class="text-muted" style="font-family: Arial, Helvetica, sans-serif;">Rs: {{$item->total}}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -118,7 +109,7 @@
                                 </li>
                                 <li class="list-group-item d-flex">
                                     <span>Discount</span>
-                              <span class="ms-auto">Rs: {{ (!empty($order->coupan_code)) ? '('.$order->coupan_code.')' : '' }}</span>
+                              <span class="ms-auto"> {{ (!empty($order->discount)) ? $order->discount : '' }}</span>
   </li>
                                 <li class="list-group-item d-flex">
                                     <span>Shipping</span>

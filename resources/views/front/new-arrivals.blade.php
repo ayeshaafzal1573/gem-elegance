@@ -10,7 +10,8 @@
         </div>
         <div class="row">
           <div class="col-md-5"></div>
-          <div class="col-md-4">           <p class="together">TOGETHER20</p>
+          <div class="col-md-4">
+               <p class="together">TOGETHER20</p>
           </div>
           <div class="col-md-4"></div>
         </div>
@@ -21,8 +22,7 @@
    <!-- new arrival banner -->
    <div class="new-banner">
     <img src="{{asset('front-assets/images/new-arrival-banner.png')}}" alt="Banner">
-    <button class="shopnow"><a href="">SHOP NOW </a></button>
-   </div>
+ </div>
 
    <!-- products -->
    <h3 class="women-heading">NEWEST PRODUCTS<br>
@@ -35,31 +35,40 @@
   <div class="row mt-3 mb-4" >
     <div class="col-md-1">
     </div>
+     @if($latestWomenProduct)
    <div class="col-md-2" id="newestproducts">
-    <div style="position: relative;">
-        <img src="{{asset('front-assets/images/Rectangle 21.png')}}" alt="">
+         <div style="position: relative;">
+               @if($latestWomenProduct->images->isNotEmpty())
+
+                            <img src="{{ asset('/' . $latestWomenProduct->images->first()->image_path) }}" alt="Gem" >
+                        @else
+                            <p>No Image</p>
+                        @endif
+
         <button class="newestbutton1">
-            <a href="{{route('front.products')}}">VIEW MORE</a>
+              <a href="{{ route('front.product-detail', $latestWomenProduct->slug) }}">VIEW MORE</a>
+
         </button>
     </div>
-    <p class="newesttext">Gold Plated Necklace</p>
-    <p class="newesttext">Rs: 1000.00</p>
+    <p class="newesttext">{{ $latestWomenProduct->name }}</p>
+    <p class="newesttext">Rs: {{ $latestWomenProduct->price }}</p>
 </div>
-
+ @endif
 <div class="col-md-2">
 </div>
-
+ @if($latestMenProduct)
 <div class="col-md-3" id="newestproducts">
     <div style="position: relative;">
-        <img src="{{asset('front-assets/images/Rectangle 23.png')}}" alt="">
+
+        <img src="{{ asset('/' . $latestMenProduct->images->first()->image_path) }}" alt="">
         <button class="newestbutton2">
-            <a href="{{route('front.men-necklace')}}">VIEW MORE</a>
+             <a href="{{ route('front.product-detail', $latestMenProduct->slug) }}">VIEW MORE</a>
         </button>
     </div>
-    <p class="newesttext">Silver Necklace</p>
-    <p class="newesttext">Rs: 2000.00</p>
+    <p class="newesttext">{{ $latestMenProduct->name }}</p>
+    <p class="newesttext">{{ $latestMenProduct->price }}</p>
 </div>
-
+@endif
   </div>
 </div>
 

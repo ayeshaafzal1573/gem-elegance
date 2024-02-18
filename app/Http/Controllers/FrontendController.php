@@ -14,8 +14,22 @@ class FrontendController extends Controller
     }
     public function newarrival()
     {
-        return view('front.new-arrivals');
+        // Get the newest product for women
+        $latestWomenProduct = Product::whereHas('category', function ($query) {
+            $query->where('slug', 'women-necklace');
+        })->latest()->first();
+
+        // Get the newest product for men
+        $latestMenProduct = Product::whereHas('category', function ($query) {
+            $query->where('slug', 'men-watches');
+        })->latest()->first();
+
+        return view('front.new-arrivals', [
+            'latestWomenProduct' => $latestWomenProduct,
+            'latestMenProduct' => $latestMenProduct,
+        ]);
     }
+
     public function about()
     {
         return view('front.about');

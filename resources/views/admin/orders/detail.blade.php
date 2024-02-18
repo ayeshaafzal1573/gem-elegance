@@ -116,7 +116,10 @@
             data:$(this).serializeArray(),
             dataType:'json',
             success:function(response){
-                
+if (response.success) {
+
+                window.location.href = response.listPageUrl;
+            }
             }
             })
 

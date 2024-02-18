@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminLoginController;
@@ -66,17 +67,21 @@ Route::group(['prefix' => 'admin'], function () {
 
         //USER ROUTES
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/frontend-list', [BannerController::class, 'list'])->name('home.list');
+        Route::get('/frontend-create', [BannerController::class, 'create'])->name('home.create');
+        Route::post('/home-insert', [BannerController::class, 'store'])->name('home.insert');
+        Route::post('/home-edit', [BannerController::class, 'edit'])->name('home.edit');
     });
 
 });
 // FRONTEND
 Route::get('/', [FrontendController::class, 'index'])->name('front.index');
 Route::get('/{slug}', [FrontendController::class, 'detail'])->name('front.product-detail');
-Route::get('/frontend/new-arrival', [FrontendController::class, 'newarrival'])->name('front.newarrival');
-Route::get('/front/about', [FrontendController::class, 'about'])->name('front.about');
-Route::get('/category/men', [FrontendController::class, 'showMen'])->name('front.men');
-Route::get('/category/women', [FrontendController::class, 'showWomen'])->name('front.women');
-Route::get('/products/{categorySlug}', [FrontendController::class, 'Products'])->name("front.products");
+Route::get('/gem-elegance/new-arrival', [FrontendController::class, 'newarrival'])->name('front.newarrival');
+Route::get('/gem-elegance/about', [FrontendController::class, 'about'])->name('front.about');
+Route::get('/gem-elegance/men', [FrontendController::class, 'showMen'])->name('front.men');
+Route::get('/gem-elegance/women', [FrontendController::class, 'showWomen'])->name('front.women');
+Route::get('/gem-elegance/{categorySlug}', [FrontendController::class, 'Products'])->name("front.products");
 
 //CART
 Route::get('/product/cart', [CartController::class, 'cart'])->name('front.cart');

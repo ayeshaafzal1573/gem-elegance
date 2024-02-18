@@ -5,21 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Banners;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('front.index');
+        $banners = Banners::all();
+        return view('front.index', ['banners' => $banners]);
     }
     public function newarrival()
     {
-        // Get the newest product for women
         $latestWomenProduct = Product::whereHas('category', function ($query) {
             $query->where('slug', 'women-necklace');
         })->latest()->first();
 
-        // Get the newest product for men
+
         $latestMenProduct = Product::whereHas('category', function ($query) {
             $query->where('slug', 'men-watches');
         })->latest()->first();

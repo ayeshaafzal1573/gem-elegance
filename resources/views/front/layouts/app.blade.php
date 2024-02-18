@@ -20,6 +20,7 @@
   <header>
  <nav class="navbar navbar-expand-md">
   <div class="container-fluid">
+    
     <a class="navbar-brand" href="index.html"><img src="{{asset('front-assets/images/logo.png')}}" alt="" class="logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

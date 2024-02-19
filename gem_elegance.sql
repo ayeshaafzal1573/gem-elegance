@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2024 at 12:20 PM
+-- Generation Time: Feb 19, 2024 at 05:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -342,7 +342,8 @@ CREATE TABLE `customer_addresses` (
 --
 
 INSERT INTO `customer_addresses` (`id`, `user_id`, `first_name`, `last_name`, `email`, `mobile`, `country_id`, `address`, `apartment`, `city`, `state`, `zip`, `notes`, `created_at`, `updated_at`) VALUES
-(2, 5, 'Syeda', 'Sunaina', 'syeda@gmail.com', '03472284368', 164, 'Lakhani Presidency South Tower', 'Flat 14', 'Karachi', 'Sindh', '12345', NULL, '2023-12-13 12:14:15', '2024-01-28 08:39:26');
+(2, 5, 'aisha', 'afzal', 'aisha@gmail.com', '819`', 164, 'hey', 'hy', 'hy', 'hy', 'hy', NULL, '2023-12-13 12:14:15', '2024-02-17 11:03:07'),
+(3, 6, 'Aisha', 'Afzal', 'ayeshaafzal1573@gmail.com', '03472284368', 3, 'C-178 Flat No 2 Behind Shamsi Hospital', 'Flat-2', 'Karachi', 'Sindh', '78219', NULL, '2024-02-17 06:54:02', '2024-02-18 08:14:02');
 
 -- --------------------------------------------------------
 
@@ -360,7 +361,7 @@ CREATE TABLE `discount_coupans` (
   `type` enum('percent','fixed') NOT NULL DEFAULT 'fixed',
   `discount_amount` double(10,2) NOT NULL,
   `min_amount` double(10,2) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT 1,
   `starts_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -373,8 +374,9 @@ CREATE TABLE `discount_coupans` (
 
 INSERT INTO `discount_coupans` (`id`, `code`, `name`, `description`, `max_uses`, `max_uses_user`, `type`, `discount_amount`, `min_amount`, `status`, `starts_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (2, 'PK1947', 'SAVE15', 'This Coupan is valid for only 2 days', 1, 10, 'percent', 15.00, 100.00, 1, '2023-12-18 13:57:55', '2024-03-01 13:58:00', '2023-12-19 08:58:05', '2024-01-27 14:45:33'),
-(4, 'BACHAT', 'BACHAT', 'Bachat Coupan', 2, 3, 'fixed', 200.00, 1000.00, 1, '2023-12-17 15:48:08', '2024-01-31 15:48:15', '2023-12-19 10:51:14', '2024-01-27 14:30:20'),
-(5, 'Flat50', '50 % OFF', 'Flat 50% off on all products', 19, 8, 'percent', 400.00, 1200.00, 1, '2024-01-26 19:51:03', '2024-07-10 19:51:17', '2024-01-27 14:51:22', '2024-01-27 14:56:55');
+(4, 'BACHAT', 'BACHAT', 'Bachat Coupan', 2, 400, 'fixed', 200.00, 1000.00, 1, '2023-12-17 15:48:08', '2024-01-31 15:48:15', '2023-12-19 10:51:14', '2024-01-27 14:30:20'),
+(5, 'Flat50', '50 % OFF', 'Flat 50% off on all products', 19, 300, 'fixed', 200.00, 1200.00, 1, '2024-01-26 19:51:03', '2024-07-10 19:51:17', '2024-01-27 14:51:22', '2024-02-17 07:08:21'),
+(8, 'TOGETHER20', 'TOGETHER20', 'this is code', 2000, 2000, 'percent', 500.00, 600.00, 1, '2024-02-18 14:39:46', '2024-02-29 14:39:54', '2024-02-18 09:39:58', '2024-02-18 09:39:58');
 
 -- --------------------------------------------------------
 
@@ -391,6 +393,36 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home`
+--
+
+CREATE TABLE `home` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image_path` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home`
+--
+
+INSERT INTO `home` (`id`, `image_path`, `created_at`, `updated_at`) VALUES
+(1, 'uploads/home-banner.png', '2024-02-18 14:35:45', '2024-02-18 14:35:45'),
+(2, 'uploads/home-banner-2.png', '2024-02-18 14:43:15', '2024-02-19 09:30:56'),
+(3, 'uploads/last-banner.png', '2024-02-18 14:47:35', '2024-02-18 14:47:35'),
+(4, 'uploads/logo.png', '2024-02-18 14:47:57', '2024-02-18 14:47:57'),
+(5, 'uploads/new-arrival-banner.png', '2024-02-19 10:32:19', '2024-02-19 10:32:19'),
+(6, 'uploads/man-banner.png', '2024-02-19 10:38:58', '2024-02-19 10:38:58'),
+(7, 'uploads/WOMEN-BANNER.png', '2024-02-19 10:39:48', '2024-02-19 10:39:48'),
+(8, 'uploads/thanks.png', '2024-02-19 10:53:31', '2024-02-19 10:53:31'),
+(9, 'uploads/about-banner.png', '2024-02-19 11:02:56', '2024-02-19 11:02:56'),
+(10, 'uploads/aboutbanner2 (1).png', '2024-02-19 11:03:10', '2024-02-19 11:03:10'),
+(11, 'uploads/Rectangle 44.png', '2024-02-19 11:03:24', '2024-02-19 11:03:24');
 
 -- --------------------------------------------------------
 
@@ -427,7 +459,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2023_12_19_102901_create_discount_coupans_table', 9),
 (17, '2024_01_27_211407_alter_orders_table', 10),
 (18, '2024_01_28_193732_alter_orders_table', 11),
-(19, '2024_01_28_203458_create_wishlist_table', 12);
+(22, '2024_02_18_185342_create_home_table', 12);
 
 -- --------------------------------------------------------
 
@@ -440,7 +472,7 @@ CREATE TABLE `orders` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `subtotal` double(10,2) NOT NULL,
   `shipping` double(10,2) NOT NULL,
-  `coupan_code` double(10,2) DEFAULT NULL,
+  `coupan_code` varchar(400) DEFAULT NULL,
   `discount` double(10,2) DEFAULT NULL,
   `grand_total` double(10,2) NOT NULL,
   `payment_status` enum('Paid','Not Paid') NOT NULL DEFAULT 'Not Paid',
@@ -466,8 +498,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `subtotal`, `shipping`, `coupan_code`, `discount`, `grand_total`, `payment_status`, `status`, `shipped_date`, `first_name`, `last_name`, `email`, `mobile`, `country_id`, `address`, `apartment`, `city`, `state`, `zip`, `notes`, `created_at`, `updated_at`) VALUES
-(4, 5, 2700.00, 100.00, NULL, NULL, 2800.00, 'Not Paid', 'Pending', NULL, 'sunaina', 'flappy', 'sunaina@gmail.com', '03312615678', 164, 'your heart', 'south', 'karachi', 'sindh', '34567', NULL, '2023-12-13 12:14:15', '2023-12-13 12:14:15'),
-(5, 5, 3500.00, 100.00, NULL, NULL, 3600.00, 'Not Paid', 'Shipped', NULL, 'Syeda', 'Sunaina', 'syeda@gmail.com', '03472284368', 164, 'Lakhani Presidency South Tower', 'Flat 14', 'Karachi', 'Sindh', '12345', NULL, '2024-01-28 08:39:26', '2024-01-29 14:00:22');
+(14, 5, 10000.00, 100.00, 'PK1947', 15.00, 10085.00, 'Not Paid', 'Delivered', '2024-02-26 19:36:16', 'Syeda', 'Sunaina', 'sunaina@gmail.com', '0312-199201', 164, 'Flat-14,South Tower,Lakhani Presidency', 'Block-14,Gulshan-e-Iqbal', 'Karachi', 'Sidnh', '78102', NULL, '2024-02-17 10:42:32', '2024-02-17 14:36:21'),
+(17, 6, 10000.00, 1200.00, 'Flat50', 200.00, 11000.00, 'Not Paid', 'Shipped', NULL, 'Aisha', 'Afzal', 'ayeshaafzal1573@gmail.com', '03472284368', 3, 'C-178 Flat No 2 Behind Shamsi Hospital', 'Flat-2', 'Karachi', 'Sindh', '78219', NULL, '2024-02-18 08:14:02', '2024-02-18 08:24:47');
 
 -- --------------------------------------------------------
 
@@ -492,8 +524,8 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `name`, `qty`, `price`, `total`, `created_at`, `updated_at`) VALUES
-(4, 4, 20, 'Starlight Spark', 1, 2700.00, 2700.00, '2023-12-13 12:14:15', '2023-12-13 12:14:15'),
-(5, 5, 31, 'Chronic Classic', 1, 3500.00, 3500.00, '2024-01-28 08:39:26', '2024-01-28 08:39:26');
+(15, 14, 48, 'Bold Bezel', 1, 10000.00, 10000.00, '2024-02-17 10:42:32', '2024-02-17 10:42:32'),
+(18, 17, 50, 'Crystal Charm', 1, 10000.00, 10000.00, '2024-02-18 08:14:02', '2024-02-18 08:14:02');
 
 -- --------------------------------------------------------
 
@@ -601,7 +633,6 @@ INSERT INTO `products` (`id`, `name`, `slug`, `price`, `compare_price`, `style`,
 (48, 'Bold Bezel', 'bold-bezel', 10000.00, 11999.00, 'Ceramic', 'Graphic', 'Make a statement with our Bold Bezel ring, a symbol of confidence and style. Crafted with precision, its prominent bezel design exudes strength and sophistication, perfect for the modern gentleman. Elevate your look with bold elegance. Shop now', 22, 3, 1, '2024-02-17 05:45:41', '2024-02-17 05:45:41'),
 (49, 'Pearl Elegance', 'pearl-elegance', 2000.00, 2300.00, 'Classic', 'Pearl', 'Pearl Elegance isn\'t just for women. Our men\'s necklace redefines sophistication. Crafted with timeless pearls and masculine design, it exudes refined masculinity. Elevate your style at Gem Elegance', 20, 2, 1, '2024-02-17 05:49:46', '2024-02-17 05:49:46'),
 (50, 'Crystal Charm', 'crystal-charm', 10000.00, 12000.00, 'Elegant', 'Gold', '\"Introducing Crystal Charm, a men\'s necklace that embodies elegance and charm. Crafted with precision and adorned with crystals, it adds a touch of sophistication to any ensemble. Elevate your style with Gem Elegance', 20, 2, 1, '2024-02-17 05:55:36', '2024-02-17 05:55:36'),
-(51, 'Gold Lariat', 'gold-lariat', 3000.00, 3299.00, 'Classic', 'Gold', 'Indulge in luxury with our Gold Lariat men\'s necklace. Crafted with exquisite detail and featuring a lariat design, it epitomizes sophistication and timeless style. Elevate your look with elegance. Shop now at Gem Elegance', 2, 2, 1, '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
 (52, 'Silver Moon', 'silver-moon', 4500.00, 4900.00, 'Ceramic', 'Silver', 'Radiate celestial elegance with our Silver Moon men\'s necklace. Crafted with sterling silver, its moon-inspired design evokes mystery and sophistication. Elevate your style with lunar allure. Discover it at Gem Elegance', 29, 2, 1, '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
 (53, 'Boho Bead', 'boho-bead', 5200.00, 5400.00, 'Craftsmanship', 'Diamond', 'Embrace the free spirit with our Boho Bead men\'s necklace. Crafted with vibrant beads and eclectic charm, it exudes bohemian style and individuality. Elevate your look with a touch of wanderlust. Find it at Gem Elegance', 30, 2, 1, '2024-02-17 06:07:28', '2024-02-17 06:07:28'),
 (54, 'Retro Link', 'retro-link', 2300.00, 2400.00, 'Classic', 'Ceramic', '\"Step into the past with our Retro Link men\'s necklace. Crafted with vintage-inspired links, it exudes old-school charm and timeless style. Elevate your look with a nostalgic touch. Discover it at Gem Elegance', 8, 2, 1, '2024-02-17 06:09:13', '2024-02-17 06:09:13'),
@@ -819,10 +850,6 @@ INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `created_at`, `u
 (279, 50, 'uploads/three.jpg', '2024-02-17 06:00:26', '2024-02-17 06:00:26'),
 (280, 50, 'uploads/two.jpg', '2024-02-17 06:00:26', '2024-02-17 06:00:26'),
 (281, 50, 'uploads/1.jpg', '2024-02-17 06:00:26', '2024-02-17 06:00:26'),
-(282, 51, 'uploads/EARINGS (30) -2.JPEG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
-(283, 51, 'uploads/EARINGS (30).JPEG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
-(284, 51, 'uploads/EARINGS (30).JPG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
-(285, 51, 'uploads/EARINGS (30)-1.JPG', '2024-02-17 06:03:22', '2024-02-17 06:03:22'),
 (286, 52, 'uploads/EARINGS (31).JPEG', '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
 (287, 52, 'uploads/EARINGS (31).JPG', '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
 (288, 52, 'uploads/EARINGS (31)-0.JPG', '2024-02-17 06:05:59', '2024-02-17 06:05:59'),
@@ -867,7 +894,13 @@ INSERT INTO `shipping_charges` (`id`, `country_id`, `amount`, `created_at`, `upd
 (2, 'rest_of_world', 0.00, '2023-12-10 05:22:55', '2023-12-10 05:22:55'),
 (3, '3', 1200.00, '2023-12-10 05:47:28', '2023-12-10 05:47:28'),
 (8, '164', 100.00, '2023-12-10 06:40:24', '2023-12-10 06:40:24'),
-(9, '1', 2000.00, '2023-12-11 10:58:24', '2023-12-11 10:58:24');
+(9, '1', 2000.00, '2023-12-11 10:58:24', '2023-12-11 10:58:24'),
+(10, '42', 200.00, '2024-02-17 10:11:54', '2024-02-17 10:11:54'),
+(11, '46', 150.00, '2024-02-17 10:15:33', '2024-02-17 10:15:33'),
+(12, '4', 100.00, '2024-02-19 11:28:08', '2024-02-19 11:28:08'),
+(13, '5', 200.00, '2024-02-19 11:28:15', '2024-02-19 11:28:15'),
+(14, '9', 1000.00, '2024-02-19 11:28:26', '2024-02-19 11:28:26'),
+(15, '6', 200.00, '2024-02-19 11:28:41', '2024-02-19 11:28:41');
 
 -- --------------------------------------------------------
 
@@ -894,7 +927,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin@gmail.com', NULL, 2, NULL, '$2y$10$JLF1I532CD5PrCyJZeg1zec3bLzfZ9fR3cLO3MNzPlFfuwooTK10a', NULL, '2023-11-26 06:33:14', '2024-01-30 05:41:32'),
-(5, 'Sunaina', 'sunaina@gmail.com', '0391-9290123', 1, NULL, '$2y$10$pfy9QEN64gsKfjh7Te6M3Oql9YfHsCdEs3tO6J97FkraB4T5HGX3O', NULL, '2023-12-10 09:59:46', '2024-01-29 13:49:25');
+(5, 'Sunaina', 'sunaina@gmail.com', '0391-9290123', 1, NULL, '$2y$10$pfy9QEN64gsKfjh7Te6M3Oql9YfHsCdEs3tO6J97FkraB4T5HGX3O', NULL, '2023-12-10 09:59:46', '2024-01-29 13:49:25'),
+(6, 'Aisha', 'ayeshaafzal1573@gmail.com', '03472284368', 1, NULL, '$2y$10$U3jgbC/CIPGJHnwOIz7gsOkWDppV8wHXKmhalzWAoWz4Mqz4HAQ0i', NULL, '2024-02-17 06:50:14', '2024-02-17 06:50:14');
 
 --
 -- Indexes for dumped tables
@@ -933,6 +967,12 @@ ALTER TABLE `discount_coupans`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `home`
+--
+ALTER TABLE `home`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -1017,13 +1057,13 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `customer_addresses`
 --
 ALTER TABLE `customer_addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `discount_coupans`
 --
 ALTER TABLE `discount_coupans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1032,22 +1072,28 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `home`
+--
+ALTER TABLE `home`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1071,13 +1117,13 @@ ALTER TABLE `product_images`
 -- AUTO_INCREMENT for table `shipping_charges`
 --
 ALTER TABLE `shipping_charges`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

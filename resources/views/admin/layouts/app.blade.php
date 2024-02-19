@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
+  
 <link rel="icon" href="{{asset('admin-assets/images/logo.png')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="{{asset('admin-assets/css/dashboard.css')}}">

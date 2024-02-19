@@ -10,9 +10,7 @@
                 <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
             </svg>
         </button>
-        <a href="{{ route('category.list') }}">
-            <button class="app-content-headerButton">Back</button>
-        </a>
+       
     </div>
     <div class="app-content-actions">
          <div class="app-content-actions-wrapper" hidden>
@@ -62,7 +60,7 @@
             </div>
             <div class="col-md-6">
                 <label for="amount">Amount</label>
-                <input class="category-input form-control" placeholder="Enter Category Name" type="text" name="amount" id="amount">
+                <input class="category-input form-control" placeholder="Enter Shipping Charge" type="text" name="amount" id="amount">
 
                 @error('amount')
                 <span class="text-danger">{{ $message }}</span>

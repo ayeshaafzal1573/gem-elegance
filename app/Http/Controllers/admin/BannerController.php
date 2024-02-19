@@ -16,7 +16,7 @@ class BannerController extends Controller
         $banners = Banners::all();
         return view('admin.frontend.list', ['banners' => $banners]);
     }
-
+  
     public function create()
     {
         return view('admin.frontend.create');

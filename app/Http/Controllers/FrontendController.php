@@ -35,7 +35,8 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('front.about');
+        $banners = Banners::all();
+        return view('front.about', compact('banners'));
     }
     //Category
     public function showMen()

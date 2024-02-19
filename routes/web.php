@@ -73,6 +73,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/home-edit/{id}', [BannerController::class, 'edit'])->name('home.edit');
         Route::post('/home-update/{id}', [BannerController::class, 'update'])->name('home.update');
         Route::get('/home-delete/{id}', [BannerController::class, 'delete'])->name('home.delete');
+        Route::get('/home/app', [BannerController::class, 'header'])->name('home.app');
     });
 
 });

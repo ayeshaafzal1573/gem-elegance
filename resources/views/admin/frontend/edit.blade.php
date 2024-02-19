@@ -12,7 +12,7 @@
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         </svg>
       </button>
-      <a href="{{route('category.list')}}">
+      <a href="{{route('home.list')}}">
       <button class="app-content-headerButton">Back</button>
       </a>
     </div>
@@ -36,8 +36,8 @@
 
     <div class="row mb-3">
         <div class="col-md-12">
-            <label for="image">Image</label>
-            <input type="file" name="image_path" id="image" class="form-control category-input" onchange="previewImage()">
+
+            <input type="file" name="image_path" id="image" class="form-control category-input" onchange="previewImage()"> <br>
             @error('image_path')
                 <span class="text-danger">{{ $message }}</span>
             @enderror

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Banners;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Using a view composer to share $banners variable with all views
+        view()->composer('front.layouts.app', function ($view) {
+            $banners = Banners::all();
+            $view->with('banners', $banners);
+        });
     }
 }

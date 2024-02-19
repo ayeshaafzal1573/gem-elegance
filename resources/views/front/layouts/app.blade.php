@@ -20,8 +20,16 @@
   <header>
  <nav class="navbar navbar-expand-md">
   <div class="container-fluid">
-    
-    <a class="navbar-brand" href="index.html"><img src="{{asset('front-assets/images/logo.png')}}" alt="" class="logo"></a>
+    @php
+
+    $banner4 = $banners->where('id', 4)->first();
+
+@endphp
+
+
+ @if ($banner4)
+ <img src="{{ asset($banner4->image_path) }}" alt="" class="logo">
+ @endif
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -83,9 +91,12 @@
     <div class="container-fluid" id="footer-bg">
       <div class="container" id="footer-front">
       <div class="row">
+      @if ($banner4)
         <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="bg">
-          <img src="{{asset('front-assets/images/logo.png')}}" alt="logo" class="logo">
-        </div> <br>
+          <img src="{{ asset($banner4->image_path) }}"  alt="logo" class="logo">
+        </div>
+         @endif
+        <br>
          <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" id="bg">
         <p class="for"> FOR THE LOVE</p><p class="flowers">OF FLOWERS</p>
         </div>

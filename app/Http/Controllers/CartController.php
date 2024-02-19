@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banners;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Country;
@@ -284,7 +285,8 @@ class CartController extends Controller
     public function thankyou($id)
     {
 
-        return view('front.thanks   ', ['id' => $id]);
+        $banners = Banners::all();
+        return view('front.thanks   ', ['id' => $id, 'banners' => $banners]);
     }
     public function getOrderSummary(Request $request)
     {

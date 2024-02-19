@@ -1,6 +1,12 @@
 @extends('front.layouts.app')
 
 @section('content')
+@php
+
+    $banner5 = $banners->where('id', 5)->first();
+@endphp
+
+
 
     <!-- new-arrivals -->
    <div class="container-fluid" id="firstsection">
@@ -18,14 +24,12 @@
     </div>
 
    </div>
-
-   <!-- new arrival banner -->
+    @if ($banner5)
    <div class="new-banner">
-    <img src="{{asset('front-assets/images/new-arrival-banner.png')}}" alt="Banner">
+    <img src="{{ asset($banner5->image_path) }}" alt="Banner">
  </div>
-
-   <!-- products -->
-   <h3 class="women-heading">NEWEST PRODUCTS<br>
+@endif
+   <h3 class="women-heading">NEW ARRIVALS<br>
     <svg xmlns="http://www.w3.org/2000/svg" width="260" height="4" viewBox="0 0 260 4" fill="none">
    <path d="M0 2H260" stroke="#A5826A" stroke-width="3"/>
  </svg>
@@ -37,10 +41,10 @@
     </div>
      @if($latestWomenProduct)
    <div class="col-md-2" id="newestproducts">
-         <div style="position: relative;">
+         <div style="position: relative; ">
                @if($latestWomenProduct->images->isNotEmpty())
 
-                            <img src="{{ asset('/' . $latestWomenProduct->images->first()->image_path) }}" alt="Gem" >
+                            <img src="{{ asset('/' . $latestWomenProduct->images->first()->image_path) }}" alt="Gem"  >
                         @else
                             <p>No Image</p>
                         @endif

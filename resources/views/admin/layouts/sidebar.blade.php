@@ -103,6 +103,16 @@
   <span>Users</span>
         </a>
       </li>
+      <li class="sidebar-list-item {{ request()->routeIs('home.list') ? 'active' : '' }}">
+        <a href="{{route('home.list')}}">
+       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="7" r="4"/>
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+</svg>
+
+  <span>General Settings</span>
+        </a>
+      </li>
 
     </ul>
   </div>

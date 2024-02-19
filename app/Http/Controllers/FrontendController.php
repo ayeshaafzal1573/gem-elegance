@@ -16,6 +16,7 @@ class FrontendController extends Controller
     }
     public function newarrival()
     {
+        $banners = Banners::all();
         $latestWomenProduct = Product::whereHas('category', function ($query) {
             $query->where('slug', 'women-necklace');
         })->latest()->first();
@@ -28,6 +29,7 @@ class FrontendController extends Controller
         return view('front.new-arrivals', [
             'latestWomenProduct' => $latestWomenProduct,
             'latestMenProduct' => $latestMenProduct,
+            'banners' => $banners
         ]);
     }
 
@@ -38,16 +40,18 @@ class FrontendController extends Controller
     //Category
     public function showMen()
     {
+        $banners = Banners::all();
         $maleData = Category::where("gender", "LIKE", "Male")->get();
 
-        return view('front.categories', compact('maleData'));
+        return view('front.categories', compact('maleData', 'banners'));
     }
 
     public function showWomen()
     {
+        $banners = Banners::all();
         $femaleData = Category::where("gender", "LIKE", "Female")->get();
 
-        return view('front.categories', compact('femaleData'));
+        return view('front.categories', compact('femaleData', 'banners'));
     }
     //Products
     public function Products($categorySlug)

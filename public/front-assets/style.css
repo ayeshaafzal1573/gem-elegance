@@ -753,7 +753,7 @@ height: 400px;
     border-radius: 5px;
     text-decoration: none;
     border: 3px #A27F61 solid;
-    background-color: transparent;
+    background-color: #bba69479;
     color: black;
 position: absolute;
 top: 200px;
@@ -773,7 +773,7 @@ left: 120px;
 border-radius: 5px;
     text-decoration: none;
     border: 3px #A27F61 solid;
-    background-color: transparent;
+background-color: #bba69479;
     color: black;
     position: absolute;
     top: 200px;
@@ -785,6 +785,14 @@ border-radius: 5px;
 
 .newestbutton2 a {
     color: black;
+    text-decoration: none;
+}
+.newestbutton2 a:hover {
+    color: #8b603b;
+    text-decoration: none;
+}
+.newestbutton1 a:hover {
+    color: #8b603b;
     text-decoration: none;
 }
 

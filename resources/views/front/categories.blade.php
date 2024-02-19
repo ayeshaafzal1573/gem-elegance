@@ -1,11 +1,18 @@
 @extends('front.layouts.app')
 
 @section('content')
+@php
+
+    $banner6 = $banners->where('id', 6)->first();
+    $banner7 = $banners->where('id', 7)->first();
+@endphp
 
     @if(isset($maleData))
+    @if ($banner6)
         <div class="women-banner-img">
-            <img src="{{ asset('front-assets/images/man-banner.png') }}" alt="Banner" />
+            <img src="{{ asset($banner6->image_path) }}" alt="Banner" />
         </div>
+        @endif
         <h3 class="women-heading">
             POPULAR CATEGORIES <br />
             <svg
@@ -37,9 +44,11 @@
     @endif
 
     @if(isset($femaleData))
+     @if ($banner7)
         <div class="women-banner-img">
-            <img src="{{ asset('front-assets/images/WOMEN-BANNER.png') }}" alt="Banner" />
+            <img src="{{ asset($banner7->image_path) }}" alt="Banner" />
         </div>
+        @endif
         <h3 class="women-heading">
             POPULAR CATEGORIES <br />
             <svg

@@ -70,7 +70,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/frontend-list', [BannerController::class, 'list'])->name('home.list');
         Route::get('/frontend-create', [BannerController::class, 'create'])->name('home.create');
         Route::post('/home-insert', [BannerController::class, 'store'])->name('home.insert');
-        Route::post('/home-edit', [BannerController::class, 'edit'])->name('home.edit');
+        Route::get('/home-edit/{id}', [BannerController::class, 'edit'])->name('home.edit');
+        Route::post('/home-update/{id}', [BannerController::class, 'update'])->name('home.update');
+        Route::get('/home-delete/{id}', [BannerController::class, 'delete'])->name('home.delete');
     });
 
 });

@@ -9,9 +9,9 @@
 
 
     <!-- new-arrivals -->
-   <div class="container-fluid" id="firstsection">
+   <div class="container-fluid" id="firstsection" >
     <div class="row">
-        <div class="col md-12">
+        <div class="col md-12" >
             <p> We Are Currently Offering a 20% Discount Across The Website  Using The Code</p>
         </div>
         <div class="row">
@@ -25,7 +25,9 @@
 
    </div>
     @if ($banner5)
-   <div class="new-banner">
+   <div class="new-banner" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
     <img src="{{ asset($banner5->image_path) }}" alt="Banner">
  </div>
 @endif
@@ -40,7 +42,7 @@
     <div class="col-md-1">
     </div>
      @if($latestWomenProduct)
-   <div class="col-md-2" id="newestproducts">
+   <div class="col-md-2" id="newestproducts" data-aos="zoom-in-up">
          <div style="position: relative; ">
                @if($latestWomenProduct->images->isNotEmpty())
 
@@ -49,7 +51,7 @@
                             <p>No Image</p>
                         @endif
 
-        <button class="newestbutton1">
+        <button class="newestbutton1" data-aos="zoom-out">
               <a href="{{ route('front.product-detail', $latestWomenProduct->slug) }}">VIEW MORE</a>
 
         </button>
@@ -61,11 +63,11 @@
 <div class="col-md-2">
 </div>
  @if($latestMenProduct)
-<div class="col-md-3" id="newestproducts">
+<div class="col-md-3" id="newestproducts" data-aos="zoom-in-up">
     <div style="position: relative;">
 
         <img src="{{ asset('/' . $latestMenProduct->images->first()->image_path) }}" alt="">
-        <button class="newestbutton2">
+        <button class="newestbutton2" data-aos="zoom-out">
              <a href="{{ route('front.product-detail', $latestMenProduct->slug) }}">VIEW MORE</a>
         </button>
     </div>

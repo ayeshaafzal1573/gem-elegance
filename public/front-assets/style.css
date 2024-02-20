@@ -3,7 +3,8 @@
 
 * {
     font-family: 'Inknut Antiqua', serif;
-
+scrollbar-width: thin;
+scrollbar-color: #C5B19E #a27f6163;
 }
 
         body {
@@ -51,8 +52,13 @@ color: black;
     margin-top: 10px;
 }
 
+
 #user-dropdown{
 margin-left: -120px !important;
+}
+.dropdown .dropdown-item:active, 
+.dropdown .dropdown-item:hover {
+background-color: #C5B19E;
 }
 
 .icon i {
@@ -314,6 +320,9 @@ background-color: #A27F61;
 padding: 10px;
 margin-top: 15px;
 width: 200px;
+transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
 }
 .addtocart  a{
 text-decoration: none;
@@ -321,13 +330,20 @@ color: black;
 }
 .addtocart a:hover{
 color: #8b603b;
+transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
 }
+
+
+
 .material{
 
 margin-left: 100px
 }
 .classic{
     padding: 5px;
+    font-size: 15px;
 color: #8b603b;
 }
 

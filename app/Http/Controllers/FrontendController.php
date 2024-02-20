@@ -18,12 +18,12 @@ class FrontendController extends Controller
     {
         $banners = Banners::all();
         $latestWomenProduct = Product::whereHas('category', function ($query) {
-            $query->where('slug', 'women-necklace');
+            $query->where('slug', 'women-rings');
         })->latest()->first();
 
 
         $latestMenProduct = Product::whereHas('category', function ($query) {
-            $query->where('slug', 'men-watches');
+            $query->where('slug', 'men-necklace');
         })->latest()->first();
 
         return view('front.new-arrivals', [

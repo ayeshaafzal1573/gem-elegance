@@ -11,7 +11,7 @@
 <!-- about banner -->
 <div class="container">
     @if ($banner9)
-   <div class="new-banner" id="newwholebanner">
+   <div class="new-banner" id="newwholebanner"  data-aos="zoom-in">
     <img src="{{ asset($banner9->image_path) }}" alt="Banner">
    </div>
    @endif
@@ -20,11 +20,11 @@
   <div class="container">
     <div class="row mt-5" >
          @if ($banner10)
-      <div class="col-md-6">
+      <div class="col-md-6" data-aos="fade-down">
         <img src="{{ asset($banner10->image_path) }}" alt="">
       </div>
       @endif
-      <div class="col-md-6 mt-5" id="abouty">
+      <div class="col-md-6 mt-5" id="abouty" data-aos="flip-left">
       <h4 class="about-heading">THE STORY BEHIND RADIANCE <br>
         <svg xmlns="http://www.w3.org/2000/svg" width="260" height="4" viewBox="0 0 260 4" fill="none">
        <path d="M0 2H260" stroke="#A5826A" stroke-width="3"/>
@@ -43,7 +43,7 @@
 
 <div class="container mb-5">
   <div class="row">
-    <div class="col-md-6 mt-5">
+    <div class="col-md-6 mt-5" data-aos="flip-right">
       <h4 class="about-heading mt-5">Our Working Process<br>
         <svg xmlns="http://www.w3.org/2000/svg" width="260" height="4" viewBox="0 0 260 4" fill="none">
        <path d="M0 2H260" stroke="#A5826A" stroke-width="3"/>
@@ -55,7 +55,7 @@
       that each material meets our rigorous standards for beauty and durabilityt</p>
     </div>
     @if($banner11)
-    <div class="col-md-6" id="abouto">
+    <div class="col-md-6" id="abouto" data-aos="fade-up">
       <img src="{{ asset($banner11->image_path) }}" alt="" width="100%">
     </div>
     @endif

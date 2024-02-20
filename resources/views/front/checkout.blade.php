@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <section class="section-9 pt-4">
+    <section class="section-9 pt-4" data-aos="flip-right">
         <div class="container">
             <form action="{{route('front.processCheckout')}}" name="orderForm" id="orderForm" method="post">
             <div class="row">
@@ -150,7 +150,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 mt-5">
+                <div class="col-md-4 mt-5" data-aos="zoom-in">
                     <div class="sub-title">
                         <h4>Order Summary</h4>
                     </div>

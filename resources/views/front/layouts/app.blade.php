@@ -2,7 +2,7 @@
 
     $banner4 = $banners->where('id', 4)->first();
 
-@endphp 
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +13,7 @@
     <link rel="icon" href="{{ asset($banner4->image_path) }}">
     @endif
     <link rel="stylesheet" href="{{asset('front-assets/style.css')}}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 
@@ -26,7 +27,7 @@
   <!-- NAVBAR -->
   <header>
  <nav class="navbar navbar-expand-md">
-  <div class="container-fluid">
+  <div class="container-fluid" >
 
 
 
@@ -91,7 +92,7 @@
 @yield('content')
    <!-- FOOTER -->
    <footer>
-    <div class="container-fluid" id="footer-bg">
+    <div class="container-fluid" id="footer-bg" data-aos="fade-in">
       <div class="container" id="footer-front">
       <div class="row">
       @if ($banner4)
@@ -123,6 +124,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="text/javascript">
   $.ajaxSetup({
     headers: {
@@ -130,6 +133,8 @@
     }
   });
 </script>
+
+
 <script type="text/javascript">
 //It makes an AJAX request to the server to add the product to the cart.
 function addtoCart(id) {[]
@@ -157,5 +162,8 @@ function addtoCart(id) {[]
 
 
 </script>
+    <script>
+        AOS.init();
+    </script>
   </body>
 </html>

@@ -8,7 +8,7 @@
     </svg>
 </h3>
 @if ($cartContent->isNotEmpty())
-<div class="container mb-5" id="gem-cart">
+<div class="container mb-5" id="gem-cart" data-aos="zoom-out-up">
 
     <div class="row">
         <div class="col-md-8">
@@ -76,7 +76,7 @@
         </div>
 
         <div class="col-md-4">
-<div class="card cart-summary" id="gem-sum">
+<div class="card cart-summary" id="gem-sum" data-aos="flip-down">
     <div class="card-body">
         <h4 class="text-center mb-4">Order Summary</h4>
         @if ($cartContent->isNotEmpty())

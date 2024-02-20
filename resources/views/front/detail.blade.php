@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('content')
-<div class="container mb-3">
+<div class="container mb-3" data-aos="zoom-in">
     <div class="row">
         <div class="col-md-5" id="main-img">
             <img src="{{ asset('/'.$product->images->first()->image_path) }}" alt="Product Image" id="main-image">
@@ -13,7 +13,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="col-md-5 mt-3 " id="p-des" >
+        <div class="col-md-5 mt-3 " id="p-des"  data-aos="zoom-out">
             <h5>{{$product->name}}</h5>
             <p class="detail-text">{{$product->description}}</p>
             <p>{{$product->price}}

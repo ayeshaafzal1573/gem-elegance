@@ -47,10 +47,7 @@ class AuthController extends Controller
             // Redirect to the login page after successful registration
             return redirect()->route('login')->with('success', 'Registration successful. You can now log in.');
         } else {
-            return response()->json([
-                'status' => false,
-                'errors' => $validator->errors(),
-            ]);
+            return redirect()->route('account.register')->with('danger', 'Please Fill Your Form Correctly.');
         }
     }
     // USER AUTHENTICATE THEN GO TO PROFILE

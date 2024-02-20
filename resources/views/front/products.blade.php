@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('content')
-  <h3 class="women-heading">
+  <h3 class="women-heading" data-aos="fade-down">
         @if($products->isNotEmpty() && isset($selectedCategory))
             {{ strtoupper("$selectedCategory") }} <br />
             <svg
@@ -21,13 +21,13 @@
 
             @if($products->isNotEmpty())
                 @foreach ($products as $product)
-                    <div class="col-md-4 rings">
+                    <div class="col-md-4 rings" data-aos="flip-up">
                         @if($product->images->isNotEmpty())
                             <img src="{{ asset('/' . $product->images->first()->image_path) }}" alt="product" class="img-fluid">
                         @else
                             <p>No Image</p>
                         @endif
-                        <div class="rings-text"><a href="{{ route('front.product-detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a></div>
+                        <div class="rings-text" ><a href="{{ route('front.product-detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a></div>
                     </div>
                 @endforeach
             </div>

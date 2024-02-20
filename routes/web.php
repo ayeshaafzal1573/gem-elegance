@@ -78,6 +78,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 // FRONTEND
+
 Route::get('/', [FrontendController::class, 'index'])->name('front.index');
 Route::get('/{slug}', [FrontendController::class, 'detail'])->name('front.product-detail');
 Route::get('/gem-elegance/new-arrival', [FrontendController::class, 'newarrival'])->name('front.newarrival');

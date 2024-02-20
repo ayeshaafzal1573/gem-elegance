@@ -31,7 +31,7 @@
       <img src="{{ asset($banner5->image_path) }}" class="d-block w-100" alt="...">
     </div>
     @endif
-    
+
   </div>
 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev" hidden>
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

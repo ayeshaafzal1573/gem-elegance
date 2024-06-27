@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2024 at 05:50 PM
+-- Generation Time: Jun 27, 2024 at 07:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -342,7 +342,7 @@ CREATE TABLE `customer_addresses` (
 --
 
 INSERT INTO `customer_addresses` (`id`, `user_id`, `first_name`, `last_name`, `email`, `mobile`, `country_id`, `address`, `apartment`, `city`, `state`, `zip`, `notes`, `created_at`, `updated_at`) VALUES
-(2, 5, 'aisha', 'afzal', 'aisha@gmail.com', '819`', 164, 'hey', 'hy', 'hy', 'hy', 'hy', NULL, '2023-12-13 12:14:15', '2024-02-17 11:03:07'),
+(2, 5, 'Sunaina', 'Syeda', 'sunaina@gmail.com', '02892010', 164, 'aPTECH', 'aptech', 'karachi', 'sindh', '02802', NULL, '2023-12-13 12:14:15', '2024-02-21 14:08:01'),
 (3, 6, 'Aisha', 'Afzal', 'ayeshaafzal1573@gmail.com', '03472284368', 3, 'C-178 Flat No 2 Behind Shamsi Hospital', 'Flat-2', 'Karachi', 'Sindh', '78219', NULL, '2024-02-17 06:54:02', '2024-02-18 08:14:02');
 
 -- --------------------------------------------------------
@@ -422,7 +422,9 @@ INSERT INTO `home` (`id`, `image_path`, `created_at`, `updated_at`) VALUES
 (8, 'uploads/thanks.png', '2024-02-19 10:53:31', '2024-02-19 10:53:31'),
 (9, 'uploads/about-banner.png', '2024-02-19 11:02:56', '2024-02-19 11:02:56'),
 (10, 'uploads/aboutbanner2 (1).png', '2024-02-19 11:03:10', '2024-02-19 11:03:10'),
-(11, 'uploads/Rectangle 44.png', '2024-02-19 11:03:24', '2024-02-19 11:03:24');
+(11, 'uploads/Rectangle 44.png', '2024-02-19 11:03:24', '2024-02-19 11:03:24'),
+(12, 'uploads/Brown and Beige Simple Jewelry Shop Promotion Banner.png', '2024-03-14 05:08:24', '2024-03-27 07:07:03'),
+(13, 'uploads/Brown and Beige Simple Furniture Banner Landscape.png', '2024-03-27 07:07:30', '2024-03-27 07:07:30');
 
 -- --------------------------------------------------------
 
@@ -499,7 +501,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `subtotal`, `shipping`, `coupan_code`, `discount`, `grand_total`, `payment_status`, `status`, `shipped_date`, `first_name`, `last_name`, `email`, `mobile`, `country_id`, `address`, `apartment`, `city`, `state`, `zip`, `notes`, `created_at`, `updated_at`) VALUES
 (14, 5, 10000.00, 100.00, 'PK1947', 15.00, 10085.00, 'Not Paid', 'Delivered', '2024-02-26 19:36:16', 'Syeda', 'Sunaina', 'sunaina@gmail.com', '0312-199201', 164, 'Flat-14,South Tower,Lakhani Presidency', 'Block-14,Gulshan-e-Iqbal', 'Karachi', 'Sidnh', '78102', NULL, '2024-02-17 10:42:32', '2024-02-17 14:36:21'),
-(17, 6, 10000.00, 1200.00, 'Flat50', 200.00, 11000.00, 'Not Paid', 'Shipped', NULL, 'Aisha', 'Afzal', 'ayeshaafzal1573@gmail.com', '03472284368', 3, 'C-178 Flat No 2 Behind Shamsi Hospital', 'Flat-2', 'Karachi', 'Sindh', '78219', NULL, '2024-02-18 08:14:02', '2024-02-18 08:24:47');
+(17, 6, 10000.00, 1200.00, 'Flat50', 200.00, 11000.00, 'Not Paid', 'Shipped', NULL, 'Aisha', 'Afzal', 'ayeshaafzal1573@gmail.com', '03472284368', 3, 'C-178 Flat No 2 Behind Shamsi Hospital', 'Flat-2', 'Karachi', 'Sindh', '78219', NULL, '2024-02-18 08:14:02', '2024-02-18 08:24:47'),
+(18, 5, 5000.00, 100.00, 'TOGETHER20', 500.00, 4600.00, 'Not Paid', 'Delivered', '2024-02-21 19:11:13', 'Sunaina', 'Syeda', 'sunaina@gmail.com', '02892010', 164, 'aPTECH', 'aptech', 'karachi', 'sindh', '02802', NULL, '2024-02-21 14:08:01', '2024-02-21 14:11:17');
 
 -- --------------------------------------------------------
 
@@ -525,7 +528,8 @@ CREATE TABLE `order_items` (
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `name`, `qty`, `price`, `total`, `created_at`, `updated_at`) VALUES
 (15, 14, 48, 'Bold Bezel', 1, 10000.00, 10000.00, '2024-02-17 10:42:32', '2024-02-17 10:42:32'),
-(18, 17, 50, 'Crystal Charm', 1, 10000.00, 10000.00, '2024-02-18 08:14:02', '2024-02-18 08:14:02');
+(18, 17, 50, 'Crystal Charm', 1, 10000.00, 10000.00, '2024-02-18 08:14:02', '2024-02-18 08:14:02'),
+(19, 18, 2, 'Time Elegance', 1, 5000.00, 5000.00, '2024-02-21 14:08:01', '2024-02-21 14:08:01');
 
 -- --------------------------------------------------------
 
@@ -900,7 +904,8 @@ INSERT INTO `shipping_charges` (`id`, `country_id`, `amount`, `created_at`, `upd
 (12, '4', 100.00, '2024-02-19 11:28:08', '2024-02-19 11:28:08'),
 (13, '5', 200.00, '2024-02-19 11:28:15', '2024-02-19 11:28:15'),
 (14, '9', 1000.00, '2024-02-19 11:28:26', '2024-02-19 11:28:26'),
-(15, '6', 200.00, '2024-02-19 11:28:41', '2024-02-19 11:28:41');
+(15, '6', 200.00, '2024-02-19 11:28:41', '2024-02-19 11:28:41'),
+(16, '169', 6.00, '2024-02-19 16:51:32', '2024-02-19 16:51:32');
 
 -- --------------------------------------------------------
 
@@ -1045,7 +1050,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1075,7 +1080,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `home`
 --
 ALTER TABLE `home`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1087,13 +1092,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1117,7 +1122,7 @@ ALTER TABLE `product_images`
 -- AUTO_INCREMENT for table `shipping_charges`
 --
 ALTER TABLE `shipping_charges`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
